@@ -1,0 +1,73 @@
+<div class="bt-container">
+  <div class="bt-container-inner">
+    <div class="category-page">
+      <div class="row clearfix">
+        <div class="column column--sm-8">
+          <ol class="breadcrumbs">
+            <li>
+              <a href="{{portal.home_url}}">{% translate header.tabs.home %}</a>
+            </li>
+            <li title="{% translate portal.solutions_home %}">
+              <a href="{{ portal.solutions_home_url }}">{% translate portal.solutions_home %}</a>
+            </li>
+            <li title="{{ category.name | h }}">
+              {{ category.name | h }}
+            </li>
+          </ol>
+        </div>
+        <div class="column column--sm-4">
+          <div class="search-box search-box--small">
+            {% snippet search_form %}
+          </div>    
+        </div>
+      </div>
+
+      <div class="header">
+        <h1 class="h2">{{ category.name | h }}</h1>
+        {% if category.description %}
+        <p class="page-description">{{ category.description }}</p>
+        {% endif %}
+      </div>
+      <div class="row folder-tree clearfix">
+        {% for folder in category.folders %}
+          <section class="column column--sm-6 column--md-4 folder">
+            <h3 class="folder__title">
+              <a class="folder__title-link" href="{{ folder.url}} ">{{ folder.name }}</a>
+            </h3>
+
+            {% if folder.articles_count > 0 %}
+              <ul class="articles">
+                {% for article in folder.articles limit:5 %}
+                  <li class="articles__item">
+                    <a class="articles__link" href="{{ article.url }}">{{ article.title | h }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+              {% if folder.articles.size > 5 %}
+                <a href="{{ folder.url }}" class="btn btn-primary see-all-articles">
+                  View all ({{folder.articles_count}})
+                </a>
+              {% endif %}
+            {% endif %}
+          </section>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /* Add Jin 0308 솔루션 범주 홈 Search 아이콘 추가*/
+  .search-box--small .hc-search-input:before {
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    content: "";
+    background: url(https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/kysearch-icon.png) no-repeat;
+    background-size: cover;
+    transform: translateY(-50%);
+    margin: 1px 0 0 8px;
+	}
+</style>

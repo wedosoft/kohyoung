@@ -1,0 +1,145 @@
+<div class="bt-container">
+  <div class="bt-container-inner">
+    <div class="article-page">
+      <div class="row clearfix">
+        <div class="column column--sm-8">
+          <ol class="breadcrumbs">
+            <li>
+              <a href="{{portal.home_url}}">{% translate header.tabs.home %}</a>
+            </li>
+            <li title="{% translate portal.solutions_home %}">
+              <a href="{{ portal.solutions_home_url }}">{% translate portal.solutions_home %}</a>
+            </li>
+            <li title="{{ article.category.name | h}}">
+              <a href="{{ article.category.url }}">{{ article.category.name | h}}</a>
+            </li>
+            <li title="{{ article.folder.name | h}}">
+              <a href="{{ article.folder.url }}">{{ article.folder.name | h}}</a>
+            </li>
+          </ol>
+        </div>
+        <div class="column column--sm-4">
+          <div class="search-box search-box--small">
+            {% snippet search_form %}
+          </div>    
+        </div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="column column--sm-3">
+          <div class="side-nav">
+            <div class="sidenav sidenav--accordion">
+              <ul class="sidenav-categories">
+                {% for category in portal.solution_categories %}
+                  {% if category.folders_count > 0 %}
+                    <li class="sidenav-category {% if category.id == article.category.id %}is-active{% endif %}" id="sidenav-category-{{category.id}}">
+                      <span class="sidenav-category__link js-sidenav-category-link">{{category.name}}</span>
+                      <ul class="sidenav-sections">
+                        {% for folder in category.folders %}
+                          {% if folder.articles_count > 0 %}
+                            <li class="sidenav-section {% if folder.id == article.folder.id %}is-active{% endif %}" id="sidenav-section-{{folder.id}}">
+                              <span class="sidenav-section__link js-sidenav-section-link">{{folder.name}}</span>
+                              <ul class="sidenav-articles">
+                                {% for article_item in folder.articles %}
+                                  <li class="sidenav-article {% if article_item.id == article.id %}is-active{% endif %}" id="sidenav-article-{{article_item.id}}">
+                                    <a class="sidenav-article__link js-sidenav-article-link" href="{{ article_item.url }}">{{article_item.title}}</a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <a class="btn btn-default sidebar-toggle js-sidebar-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i> Open navigation</a>
+        </div>
+        <div class="column column--sm-6">
+          <article class="article clearfix" itemscope itemtype="http://schema.org/Article">
+            <header class="article-header">
+              <h1 class="article__title" itemprop="name">
+                {{ article.title | h}}
+              </h1>
+
+              <div class="article-meta">
+                <div class="article-meta__col article-meta__col--main">
+                  <div class="entry-info">
+                    <div class="entry-info__content">
+                      {% if article.personalized_articles? %}
+                        <b class="author">
+                          {{ article.author }}
+                        </b>
+                      {% endif %}
+                      <div class="meta">{% translate portal.article.modified_on %} {{ article.modified_on | short_day_with_time }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            <div class="article__body markdown" itemprop="articleBody" data-article>
+              {{ article.body }}
+            </div>
+
+            {% if article.attachments.size > 0  %}
+              <div class="article__attachments">
+                <ul class="list-unstyled attachment-list">
+                {% for attachment in article.attachments %}
+                  <li class="attachment-list__item">
+                    <span class="fa fa-paperclip attachment-list__icon"></span>
+                    <a href="{{ attachment.url }}" target="_blank">{{ attachment.filename }}</a>
+                    <div class="meta">({{ attachment.size }})</div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </article>
+
+          <footer class="article-footer clearfix">
+            {{article | article_voting }}
+          </footer>
+
+          <div class="prevnext"></div>
+        </div>
+        <div class="column column--sm-3">
+          <div data-toc></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /* Add Jin 0307 솔루션 아티클 Search 아이콘 추가*/
+  .search-box--small .hc-search-input:before {
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    content: "";
+    background: url(https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/kysearch-icon.png) no-repeat;
+    background-size: cover;
+    transform: translateY(-50%);
+    margin: 1px 0 0 8px;
+}
+ /* Add Jin 0307 솔루션 타이틀 텍스트 크기 조정*/
+  .sidenav-category__link {font-size: 16px;}
+  .article__title {font-size: 17px;}
+  
+ /* Add Jin 반응형 Mobile 예 아니오 버튼 크기 조정*/  
+  @media (max-width: 45em) {
+    .article-vote .vote-up {padding: 10px 10px;}
+    .article-vote .vote-down {padding: 10px 10px;}
+  }
+  @media (max-width: 390px) {
+    .article-vote .vote-up {display: block; width: 40%; margin: 15px 0 0 0;}
+    .article-vote .vote-down {display: block; width: 40%; margin: 10px 0 0 0;}
+  }
+</style>

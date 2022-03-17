@@ -1,0 +1,63 @@
+<div class="bt-container">
+  <div class="bt-container-inner">
+    <div class="forum-page" id="forum-{{forum.id}}">
+      <ol class="breadcrumbs">
+        <li>
+          <a href="{{portal.home_url}}">{% translate header.tabs.home %}</a>
+        </li>
+        <li title="{% translate portal.community_forums %}">
+          <a href="{{portal.discussions_home_url}}">{% translate portal.community_forums %}</a>
+        </li>
+        <li>
+          <a href="{{forum.forum_category.url}}">{{forum.forum_category.name | h}}</a>
+        </li>
+      </ol>
+      
+      <h1 class="forum-title">{{forum.name| h}}</h1>
+      
+      {% if forum.description.size > 0 %}
+        <p class="forum-desc">
+          {{forum.description | h}}
+        </p>
+      {% endif %}
+      
+      <p class="forum-buttons">
+        {% if forum.type_name != 'announcement' %}
+          {{portal | link_to_start_topic}}
+        {% endif %}
+        {{forum | follow_forum_button}}
+      </p>
+      
+      <div class="forum-filters">
+        {{forum | default_topic_filters}}
+      </div>
+      
+      {% paginate forum.topics by 10 %}
+        <ul class="forum-topics">
+          {% for topic in paginate.collection %}
+            <li class="forum-topics__item {% if topic.sticky? %} forum-topics__item--sticky {% endif %}">
+  <a class="forum-topics__link" title="{{topic.title | h}}" href="{{topic.url}}">
+    {% if topic.sticky? %}
+      <i class="fa fa-thumb-tack forum-topics__pin" aria-hidden="true"></i>
+    {% endif %}
+    {{topic.title | h}}
+
+    <div class="forum-topics__labels">
+      {{ topic | topic_labels }}
+    </div>
+  </a>
+  
+  <div class="meta forum-topics__meta">
+    {{ topic | topic_info }}
+  </div>
+</li>
+
+          {% else %}
+            <p>{% translate portal.no_topics_in_this_view %}</p>
+          {% endfor %}
+        </ul>
+        {{paginate | default_pagination}}
+      {% endpaginate %}
+    </div>
+  </div>
+</div>

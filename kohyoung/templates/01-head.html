@@ -1,0 +1,37 @@
+<!-- Title for the page -->
+<title> {{ meta.title }} : {{ portal.name }} </title>
+
+<!-- Meta information -->
+{{ meta | default_meta }}
+
+<!-- Responsive setting -->
+{{ portal | default_responsive_settings }}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css" integrity="sha512-8Vtie9oRR62i7vkmVUISvuwOeipGv8Jd+Sur/ORKDD5JiLgTGeBSkI3ISOhc730VGvA5VVQPwKIKlmi+zMZ71w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.magnific-popup/1.0.0/magnific-popup.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/spruce@2.x.x/dist/spruce.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
+
+<script>
+    window.addEventListener('load', () => {
+        const keywords = ['kohyoung', 'helpcenter', 'FAQ'];
+
+        const keywordsList = document.querySelector('.popular-searches__list');
+        const { protocol, hostname } = window.location;
+        const baseURL = `${protocol}//${hostname}/support/search?term=`;
+
+        if (keywordsList) {
+            keywords.forEach(keyword => {
+                keywordsList.insertAdjacentHTML('beforeend', `<li class="popular-searches__item">
+                                    <a href="${baseURL}${keyword}">${keyword}</a>
+                                    <span class="popular-searches__comma">,</span>
+                                  </li>`);
+            })
+        }
+    })
+</script>

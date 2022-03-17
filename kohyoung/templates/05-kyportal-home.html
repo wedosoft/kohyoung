@@ -1,0 +1,195 @@
+{% assign category_list_enabled = true %}
+{% assign recent_articles_enabled = true %}
+
+<div class="bt-container" data-home-page>
+  <div class="bt-container-inner">
+    {% if recent_articles_enabled %}
+      {% if portal.recent_articles.size > 0 %}
+        <div class="recent-articles" id="recent-articles">
+          <h2 class="recent-articles__title text-center">Recent articles</h2>
+          <ul class="row articles recent-articles__list">
+            {% for article in portal.recent_articles limit:6 %}
+              <li class="column column--sm-4 articles__item recent-articles-item">
+                <a class="articles__link" href="{{ article.url }}"><span class="fa fa-star"></span> {{ article.title | h }}</a>
+                <p class="recent-articles-item__excerpt meta">
+                  {{ article.body_plain | h |truncate:80 }}
+                </p>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+<div class="bt-container bt-container--grey clearfix">
+  <div class="bt-container-inner">
+
+    <!-- CATEGORY LIST -->
+    {% if category_list_enabled %}
+    <h2 class="category-list-title"><a href="/ko/support/solutions">Broswer Our Knowledge Base</a></h2>
+    <div class="category-list-wrapper" id="category-list">
+      <ul class="row category-list">
+        {% for category in portal.solution_categories %}
+          {% if category.folders_count > 0 %}
+            <li class="column column column--sm-6 category-list-item" id="{{category.id}}">
+              <a class="category-list-item__link" href="{{category.url}}">
+                 <!-- Add Jin 포털 홈 Knowledge base icon txt 추가 -->
+                {% case category.id %}
+                  {% when 73000270889 %}
+                  	<span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/help-desk.png?raw=true" alt="Abouthelpdesk">
+                      <p class="cli-txt">ABOUT</p>
+                      <p class="icon_txt">ABOUT THE HELP CENTER</p>
+                  	</span>
+                  {% when 73000271110 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/FAQ.png?raw=true" alt="FAQ">
+                      <p class="cli-txt">FAQ</p>
+                      <p class="icon_txt">CUSTOMER FAQ</p>
+                  	</span>
+                  {% when 73000271111 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/KYE-Distributors-Only.png?raw=true" alt="KYE-Distributors">
+                      <p class="cli-txt">KYE</p>
+                      <p class="icon_txt">KYE-DISTRIBUTORS</p>
+                  	</span>
+                  {% when 73000271112 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/official-documents.png?raw=true" alt="Official-documents">
+                      <p class="cli-txt">OFFICAL</p>
+                      <p class="icon_txt">OFFICAL DOCUMENTS</p>
+                  	</span>  			
+                  {% when 73000271113 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Release-Notes.png?raw=true" alt="Releasenote">
+                      <p class="cli-txt">RELEASE</p>
+                      <p class="icon_txt">RELEASE NOTE</p>
+                    </span>
+                  {% when 73000271115 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Application-Note.png?raw=true" alt="APPLICATION NOTE">
+                      <p class="cli-txt">APP NOTE</p>
+                      <p class="icon_txt">APPLICATION NOTE</p>
+                    </span>
+                  {% when 73000271121 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://raw.githubusercontent.com/wedosoft/kohyoung/main/images/Icon_Koh-Young-Inspection-Machine-BW_LowRes.png" alt="Hardware">
+                      <p class="cli-txt">HARDWARE</p>
+                      <p class="icon_txt">HARDWARE</p>
+                    </span>
+                  {% when 73000271122 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Troubleshooting.png?raw=true" alt="TROUBLESHOOTING">
+                      <p class="cli-txt">TROUBLE</p>
+                      <p class="icon_txt">TROUBLE SHOOTING</p>
+                    </span>
+                  {% when 73000271125 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/download.png?raw=true" alt="SOFTWARE DOWNLOAD">
+                      <p class="cli-txt">SOFTWARE</p>
+                      <p class="icon_txt">SOFTWARE DOWNLOAD</p>
+                    </span>
+                  {% when 73000271127 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Team-activity.png?raw=true" alt="AE TEAM ACTIVITY">
+                      <p class="cli-txt">ACTIVITY</p>
+                      <p class="icon_txt">AE TEAM ACTIVITY</p>
+                    </span>
+                  {% when 73000271128 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/admin.png?raw=true" alt="Admin">
+                      <p class="cli-txt">ADMIN</p>
+                      <p class="icon_txt">ADMIN</p>
+                    </span>
+                  {% when 73000271129 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/KYE-Distributors-Only.png?raw=true" alt="KYSEA Distributors">
+                      	<p class="cli-txt">KYESA</p>
+                        <p class="icon_txt">KYSEA DISTRIBUTORS</p>
+                    </span>
+                  {% when 73000271130 %}
+                    <span class="category-list-item__icon">
+                      <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Release-Notes.png?raw=true" alt="KOREA_SUPPORT">
+                      <p class="cli-txt">K-SUPPORT</p>
+                      <p class="icon_txt">KOREA SUPPORT</p>
+                    </span>
+                {% endcase %}
+                  <p class="meta">{{category.description}}</p>
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <!-- / CATEGORY LIST -->
+  </div>
+</div>
+<style>
+   /* Add Jin 포털 홈 Knowledge base icon txt CSS */
+  .category-list-title a {color: #222;}
+  .column--sm-6 {width: 25%;}
+  .category-list-item__link {
+    display: block;
+    padding: 18px 0px 56px;
+    font-weight: 400;
+    color: #666;
+    vertical-align: middle;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  .category-list-item__icon {
+    display: block;
+    float: left;
+    height: 40px;
+    position: absolute;
+    left: 20%;
+  }
+  .category-list-item__icon > .cli-txt {display: inline-block; margin-left: 30px; font-size: 16px;}
+  .category-list-item__icon img {height: 40px;}
+  .category-list-item__link .meta {display: none;}
+  .category-list-item:hover .icon_txt {display: block;}
+  /* Add Jin 포털 홈 Knowledge base box:hover txt CSS */
+  .icon_txt {display: none; position: absolute; top: 50px; background: #93c450b3; border-radius: 5px; padding: 10px 10px 10px; width: 130px; text-align: center; color: #ffff; line-height: 20px; z-index: 3;}
+  
+  .icon_txt:after {
+    position: absolute;
+    top: -15px;
+    left: 20%;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-bottom-color: #93c450b3;
+    border-width: 8px;
+    pointer-events: none;
+    content: ' ';
+  }
+/* Add Jin 반응형 iPad 포털 홈 Knowledge base icon txt CSS */
+  @media (max-width: 1024px) {
+    .column--sm-6 {width: 33.3%;}
+    .category-list-item__link {padding: 20px 0px 50px;}
+    .category-list-item__icon {left: 30.3%; text-align: center;}
+    .category-list-item__icon img {height: 30px;}
+    .category-list-item__icon > .cli-txt {margin-left: 10px; font-size: 14px;}
+  }
+  @media (max-width: 768px) {
+    .category-list-item__icon {left: 23.3%; text-align: center;}
+  }
+/* Add Jin 반응형 Mobile 포털 홈 Knowledge base icon txt CSS */
+  @media (max-width: 45em) {
+    .column--sm-6 {width: 50%; padding-right: 0px;}
+    .category-list-item__icon {left: 14.5%;}
+   .category-list-item__link {padding: 20px 0px 50px;}
+   
+  }
+  @media (max-width: 280px) {
+    .column--sm-6 {padding-right: 0px;}
+    .category-list-item__icon {left: 17%;}
+    .category-list-item__icon img {height: 25px;}
+    .category-list-item__icon > .cli-txt {margin-left: 5px; font-size: 12px;}
+  }
+</style>

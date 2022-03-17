@@ -1,0 +1,241 @@
+{% assign topbar_image = true %}
+{% assign show_alert_icon = true %}
+{% assign show_alert_close_button = true %}
+{% assign show_alert_title = false %}
+
+
+
+
+<header class="topbar {% if portal.current_page == 'portal_home' or portal.current_page == 'search' %}topbar--large{% else %}topbar--small{% endif %}" data-topbar>
+  <div class="topbar__nav ">
+    <div class="bt-container">
+      <div class="bt-container-inner topbar__container-inner">
+        <div class="topbar__inner">
+          <div class="topbar__col topbar__col--logo">
+            <div class="logo-wrapper">
+              <div class="logo">
+                <a href="{{ portal.linkback_url }}">
+                  <img src="{{ portal.logo_url }}" alt="">
+                </a>
+              </div>
+            </div>
+
+            <button type="button" role="button" aria-label="Toggle Navigation" class="lines-button x" data-toggle-menu> <span class="lines"></span> </button>
+          </div>
+          <div class="topbar__col topbar__menu">
+            <div class="topbar__collapse" data-menu>
+              <div class="topbar__controls {% if portal.user.id %}topbar__controls--logged-in{% else %}topbar__controls--anonymous{% endif %}">
+              <!-- Add Jin Header-->
+                <a class="topbar_link" href="/ko/support/solutions/73000270889">About</a>
+                <a class="topbar_link" href="{{portal.new_ticket_url}}">{% translate ticket.submit_ticket_title %}</a>
+                {% if portal.user.id %}
+                <div class="banner-language-selector banner-user-dropdown pull-right" id="lan_header" data-tabs="tabs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="">
+                   <ul class="language-options" role="tablist">
+                    <li class="dropdown">
+                      <h5 class="dropdown-toggle" data-toggle="dropdown">
+                        <span>Product</span>
+                        <span class="caret"></span>
+                      </h5>
+                      <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
+                        <li><a href="/">SPI</a></li>
+                        <li><a href="/" class="">AOI</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="language-options" role="tablist">
+                    <li class="dropdown">
+                      <h5 class="dropdown-toggle" data-toggle="dropdown">
+                        <span>My Account</span>
+                        <span class="caret"></span>
+                      </h5>
+                      <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
+                        <li><a href="/support/tickets">My Tickets</a></li>
+                        <li><a href="/logout" class="">Sign out</a></li>
+                        <li><a href="/support/profile/edit" class="">Edit Profile</a></li>
+                        <li><a href="/ko/support/solutions/73000271127" class="">Activity</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="language-options" role="tablist">
+                    <li class="dropdown">
+                      <h5 class="dropdown-toggle" data-toggle="dropdown">
+                        <span>Manual</span>
+                        <span class="caret"></span>
+                      </h5>
+                      <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
+                        <li><a href="/ko/support/solutions/73000271112">Offical Documents</a></li>
+                        <li><a href="/ko/support/solutions/73000271113" class="">Release Note</a></li>
+                        <li><a href="/ko/support/solutions/73000271110" class="">Customer FAQ</a></li>
+                        <li><a href="/ko/support/solutions/73000271115" class="">Application Note</a></li>
+                        <li><a href="/ko/support/solutions/73000271121" class="">Hardware</a></li>
+                        <li><a href="/ko/support/solutions/73000271122" class="">Trouble Shooting</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    	<!-- Add Jin Header End-->
+    <div class="bt-alerts">
+      {% for category in portal.solution_categories %}
+        {% for folder in category.folders %}
+          {% for article_item in folder.articles %}
+            {% for tag in article_item.tags %}
+              {% if tag.name contains 'alert' %}
+                <div class="bt-alert bt-alert--{% if tag.name == 'alert_info' %}info{% endif %}{% if tag.name == 'alert_success' %}success{% endif %}{% if tag.name == 'alert_warning' %}warning{% endif %}{% if tag.name == 'alert_danger' %}danger{% endif %}" id="alert-{{ article_item.id }}">
+                  {% if show_alert_icon %}
+                    <div class="bt-alert__shape bt-alert__shape--main">
+                      <i class="bt-alert__icon bt-alert__icon--notify"></i>
+                    </div>
+                  {% endif %}
+                  <div class="bt-alert__body">
+                    {% if show_alert_title %}
+                      <div class="bt-alert__title">{{ article_item.title }}</div>
+                    {% endif %}
+                    <p>{{ article_item.body }}</p>
+                  </div>
+                  {% if show_alert_close_button %}
+                    <div class="bt-alert__shape bt-alert__shape--close">
+                      <button class="bt-alert__icon bt-alert__icon--close" aria-hidden="true"></button>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <!-- Search and page links for the page -->
+  {% if portal.current_tab %}
+    {% if portal.current_page == 'portal_home' or portal.current_page == 'search' %}
+   		<!-- Add Jin Background -->
+      <div class="hero-bg-box">
+        <div class="hero-bg" data-hero-bg=""></div>
+   		<!-- Add Jin Background END -->
+        <div class="bt-container-inner search-box search-box--hero-unit" data-search-box>
+          {% snippet search_form %}
+          <div class="lt-popular-searches">
+            <span class="lt-popular-searches__label">
+             Popular Searches:
+            </span>
+            <ul class="popular-searches__list"></ul>
+          </div>
+        </div>
+      </div>
+	</div>
+    {% endif %}
+  {% endif %}
+
+</header>
+<style>
+  /* Add Jin Header CSS */
+  .layout {height: auto;}
+  .topbar__nav {border-bottom: 0;}
+  /* .topbar__nav--white .topbar_link {color: #ffff;}  */
+  .topbar_link {color: #222; font-size: 18px;}
+  .topbar_link:hover {color: #93c450 !important;}
+  
+  /* Add Jin Header Dropdown CSS */
+  #lan_header {display: flex; cursor: pointer;}
+  #lan_header .language-options {margin-left: 1rem; margin-right: 1rem;}
+  #lan_header .dropdown-toggle {font-size: 18px !important;}
+  /* .topbar__nav--white #lan_header .dropdown-toggle {color: #ffff;}  */
+  #lan_header .language-options .dropdown-toggle:hover {color:#93c450;}
+  .topbar--small .topbar_link:hover {color: #93c450;}
+  /* .topbar--small #lan_header {color :#ffff;}  */
+  .dropdown-menu {background: rgb(19 19 19 / 77%);}
+  .language-options .dropdown-menu li a {color: #ffff; background: none;}
+  .language-options .dropdown-menu li a:hover {color: #93c450;}
+  
+  /* Add Jin Header Search box txt CSS */ 
+  #support-search-input::placeholder {color: #ffff; font-size: 20px !important;}
+  
+  @media (max-width: 435px) {
+    #support-search-input::placeholder {font-size: 14px !important;}
+    .search-box--hero-unit .hc-search-input:before {width: 18px; height: 18px;}
+  }
+  
+  /* Add Jin Mobile Header CSS */
+  .lines {background: #276FD0;}
+  .lines:before, .lines:after {background: #276FD0;}
+  /* .topbar__collapse .top_link {color: #ffff;}  */
+  
+  /* Add Jin Background CSS */
+  .hero-bg-box {
+    position: relative;
+    background: white;
+    z-index: 1;
+    width: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    overflow: hidden;
+    margin-top: 0;
+    padding: calc(323px + 7%) 15px 10%;
+  }
+  
+   .hero-bg {
+    position: absolute;
+    left: 0;
+    top: 88px;
+    background: url('https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/MOI%20(3).jpg') no-repeat center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 30% 72%;
+    width: 100%;
+    height: 100%; 
+    z-index: 1;
+  }
+  
+  
+  /* Add Jin Header 반응형 iPad CSS */
+  @media (max-width: 1024px) {
+    /* .topbar__nav--white.lines {color #ffff;}
+    .topbar__nav--white.lines:before, .lines:after {color: #ffff;}
+    .topbar__nav--filled .topbar_link, .topbar__controls a {color: #ffff;} */
+    #lan_header .language-options {padding: 0;}
+    .topbar__nav--filled #lan_header .language-options .dropdown-toggle {_color: #ffff; text-align: center; padding: 8px !important;}
+    .topbar_link, .topbar__controls a {display: block; text-align: center; padding: 7px 10px;}
+    .open .dropdown-menu {
+     position: relative;
+     min-width: 100%;
+     display: block;
+     }
+    .hero-bg-box {margin-top: 0px;}
+  }
+  
+  @media (max-width: 991px) {
+  	.dropdown-toggle .caret {margin-top: 8px; margin-right: 0; right: auto;}
+    #lan_header {display: block; text-align: center;}
+    .hero-bg {top: 78px;}
+  }
+  
+  /* Add Jin Header 반응형 Mobile CSS */  
+  @media (max-width: 635px) {
+    .hero-bg-box {margin-top:0;}
+    .hero-bg {top: 68px !important; background-position: -113px !important;}
+  }
+  
+  @media (max-width: 435px) {
+    .logo img {max-height: 40px !important;}
+    #lan_header .language-options {top: 0;}
+    #lan_header .language-options .dropdown-toggle {_color: #ffff; text-align: center; padding: 8px !important;}
+    .dropdown-menu a {font-size: 14px;}
+    .language-options .dropdown-toggle {color: #ffff;} 
+    .hero-bg-box {padding: calc(150px + 7%) 15px 10%;}
+    .hero-bg {background: url('https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/MOI%20mobile.jpg') no-repeat center; background-position: 33% 0% !important;}
+  }
+</style>
+
+
+
+
+

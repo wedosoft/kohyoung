@@ -1,0 +1,52 @@
+<div class="bt-container">
+	<div class="bt-container-inner">
+		<div class="new-ticket-page">
+		  <div class="row clearfix">
+		    <div class="column column--sm-8 ">
+		      <h1 class="new-ticket-title">{% translate ticket.submit_ticket_title %}</h1>
+
+		      <div class="new-ticket-form">
+		        {% snippet new_ticket_form %}
+		      </div>
+		    </div>
+		    <div class="column column--sm-4 " id="new-ticket-search"></div>
+		  </div>
+		</div>
+	</div>
+</div>
+<style>
+ /* 22.03.08 Add Jin 티켓필드 CSS 수정 */
+ .new-ticket-page {margin-bottom: 0px;}
+ label.required:after {color: #93c450;}
+  @media (min-width: 768px) {
+    .column--sm-8 {
+      float: none;
+      margin: 0 auto;
+      width: 66.6666666667%;
+    }
+  }
+  /* 22.03.08 Add Jin 파일 첨부 CSS 수정 */
+  #attachment-type .attachments-list-wrap {top: 25px;}
+  #attachment-type .add_attachment {
+    text-align: center;
+    border: 1px solid #93c450;
+    border-radius: 5px;
+    color: #93c450;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 120px;
+    z-index: 1;
+  }
+  /* 22.03.08 Add Jin Submit Button CSS 수정 */
+  .form-portal .form-actions {text-align: center;}
+  .form-actions {
+    margin-top: 21.875px;
+    padding-top: 21.875px;
+    margin-bottom: 21.875px;
+    border-top: 1px solid #e5e5e5;
+  }	
+  #helpdesk_ticket_submit {width: 100px; margin-right: 10px;}
+  .form-actions .btn {width: 100px;}
+</style>

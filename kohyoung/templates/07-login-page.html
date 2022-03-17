@@ -1,0 +1,56 @@
+
+<div class="bt-container">
+  <div class="bt-container-inner">
+    <div class="bt-auth-page" id="login-page-wrapper">
+      <div class="row bt-auth-page__items clearfix">
+        <div class="column column--sm-6 column--md-4 column--md-offset-2 bt-auth-page__item" id="login-container">
+          <div id="login-form">
+            <h2 class="h3 auth-title">{% translate portal.login_portal %}</h2>
+            <p class="meta">{% translate portal.login_details %}</p>
+            {% snippet login_form %}
+
+            {% if portal.has_alternate_login %}
+              <div class="auth-item bt-login-alternate">
+                <h2 class="h3 auth-title">{% translate portal.login_options %}</h2>
+                {{ "Google" | login_via_google }}
+                {{ "Facebook" | login_via_facebook }}
+                {{ "Twitter" | login_via_twitter }}
+              </div>
+            {% endif %}
+          </div>
+          <div id="forgot-form" class="hide">
+            <h2 class="h3 auth-title">{% translate forgot_password %}</h2>
+            <p>{% translate portal.reset_password %}</p>
+            {% snippet forgot_password_form %}
+          </div>
+        </div>
+        <div class="column column--sm-6 column--md-4 bt-auth-page__item">
+          <div class="bt-auth-page__signup-wrapper">
+            {% if portal.can_signup_feature %}
+              <div class="auth-item signup" id="signup-container">
+                <h2 class="h3 auth-title">{% translate signup %}</h2>
+                <p>
+                  <a href="{{ portal.signup_url }}" class="btn btn-primary">
+                    {% translate signup_up_with_us %}
+                  </a>
+                </p>
+                <p class="meta">
+                  {% translate signup_help_information %}
+                </p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /* Add jin login button*/
+  .btn-login {padding: 7px 40px 5px !important;}
+  #forgot_password {font-size: 13px;}
+  .freshid_login .agent-login-link a  {color: #93c450;}
+  .freshid_login .agent-login-link a:hover {color: #7ba740;}
+  .freshid_login .agent-login-link, .freshid_login .agent-login-link a {font-size: 13px;}
+  .bt-login-alternate {display: none;}
+</style>

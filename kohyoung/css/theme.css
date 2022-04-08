@@ -3931,11 +3931,12 @@ input[type=checkbox]:checked:before {
 
 .article__body {
   margin-bottom: 24px;
+  word-break: break-word;
 }
-.article__body ul,
+/* .article__body ul,
 .article__body ol {
   margin-left: 20px;
-}
+} */
 .article__body ul,
 .article__body ol {
   margin-top: 12px;

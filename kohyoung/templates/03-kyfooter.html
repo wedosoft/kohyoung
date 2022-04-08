@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="icon-link">
-            <a href="https://kohyoungdemo.freshdesk.com/ko/support/discussions">
+            <a href="https://help.kohyoung.com/en/support/discussions/">
               <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Forums.png?raw=true" alt="forums">
               <i class="fa fa-arrow-up" aria-hidden="true"></i>
               <p class="ficon_txt">Forums</p>
@@ -70,9 +70,9 @@
   .footer-container__col {vertical-align: top; font-size: 0.8em;}
   .footer-container__col > p {margin: 0;}
   .text-left {padding-top: 15px;}
-  .text-left a {display: block; width: 100%; transition: all 0.3s;}
+  .text-left a {display: block; width: 100%;}
   .footer-container i {font-size: 13px; transform: rotate(45deg);}
-  .text-left a:hover {color: #93c450;}
+  .text-left a:hover {color: #93c450; transition: all 0.3s;}
   .text-right {margin-top: 8px; cursor: pointer;}
   #lan_footer .language-options .dropdown-toggle {font-weight: 500;}
   #lan_footer .language-options .dropdown-toggle:hover {color: #93c450;}
@@ -142,21 +142,20 @@
   	}
   
   /* Add Jin Footer Mobile CSS */
-  	@media (max-width: 767px) {
-    .footer-container__col {padding-left: 0px;}
+  	@media (max-width: 768px) {
     .go-top i {font-size: 30px;}
-	.language-options .dropdown-toggle { display: block; text-align: right;}
+	}
 	@media (max-width: 635px) {
-    .text-left {font-size: 13px;}
-    .footer-container i {font-size: 13px;}
+    .text-left {font-size: 12px; padding-left: 0px;}
+    .footer-container i {font-size: 10px;}
     .text-right {margin-top: 0;}
     .language-options .dropdown-toggle {font-size: 13px;}
     .go-top {width: auto; right: 10px;}
-	.go-top i {font-size: 30px;}
+	  .go-top i {font-size: 30px;}
      
 	}
 	@media (max-width: 45em) {	
-    .language-options .dropdown .caret {margin-top: 7px;}
+    .footer-container__col {padding-left: 0px; font-size: 10px;}
     .language-options .dropdown-toggle {color: #000;}
     .language-options .dropdown-toggle {padding: 0 !important; margin: 0; text-align: right;}
     .text-right {margin-left: -2px; padding-top: 3px;}
@@ -166,7 +165,10 @@
     .ficon_txt {top: 70px; font-size: 12px; width: 23%; padding: 5px 5px 5px;}
     .go-top i {font-size: 30px;}
 	}
-   
+  @media (max-width: 280px) {
+    .text-left {padding-left: 15px;}
+    }
+  
 </style>
 
 

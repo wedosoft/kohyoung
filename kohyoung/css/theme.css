@@ -1,11 +1,19 @@
 @charset "UTF-8";
+
+.bt-alerts {height: 50px;}
+/* Add Jin alert height 수정 */
 .bt-alerts .bt-alert {
+  max-width: 1180px;
+  margin: 0 auto;
   display: flex;
   flex-flow: row nowrap;
   align-items: stretch;
-  min-height: 70px;
+  height: 50px;
   position: relative;
   font-size: 16px;
+}
+@media (max-width: 1024px) {
+  .bt-alerts .bt-alert { width: 92.5%; }
 }
 .bt-alerts .bt-alert * {
   box-sizing: border-box;
@@ -92,8 +100,11 @@
   margin-bottom: 8px;
 }
 
+/* Add jin table content css 수정 */
+
 .lt-toc * {
   box-sizing: border-box;
+  font-size: 12px;
 }
 
 .lt-toc--list {
@@ -115,6 +126,7 @@
 
 .lt-toc--link.is-active span {
   color: #fff;
+  font-size: 12px;
 }
 
 .lt-toc--current {
@@ -127,7 +139,7 @@
 
 .lt-toc_is-desktop .lt-toc--title {
   margin: 0 0 12px;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .lt-toc_is-desktop .lt-toc--current {
@@ -311,7 +323,7 @@ html {
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5 !important;
   color: #222;
@@ -423,17 +435,17 @@ h1,
 
 h2,
 .h2 {
-  font-size: 28px;
+  font-size: 22px;
 }
 
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 h4,
 .h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h5,
@@ -611,7 +623,12 @@ ul.unstyled {
 }
 
 .layout {
-  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  height: 100vh;
   background-color: #fff;
 }
 
@@ -623,7 +640,7 @@ ul.unstyled {
 .layout__content {
   width: 100%;
   min-height: calc(100vh - 490px);
-  padding-top: 120px;
+  padding-top: 350px;
 }
 .layout__content:after {
   display: block;
@@ -1049,18 +1066,15 @@ input[type=checkbox]:checked:before {
   margin-right: -15px;
 }
 
-@media (max-width: 1024px) {
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-  }
+@media screen and (max-width: 1024px) {
+  .row {margin-left: 0px; margin-right: 0px;}
 }
-@media (max-width: 767px) {
-  .row {
-    margin-left: -15px;
-    margin-right: 0;
-  }
+
+@media screen and (max-width: 635px) {
+  .row {margin-left: -17px; margin-right: -15px;}
 }
+
+
 .column {
   float: left;
   width: 100%;
@@ -1284,7 +1298,7 @@ input[type=checkbox]:checked:before {
   }
 
   .column--sm-3 {
-    width: 25%;
+    width: 20%;
   }
 
   .column--sm-4 {
@@ -1296,7 +1310,7 @@ input[type=checkbox]:checked:before {
   }
 
   .column--sm-6 {
-    width: 50%;
+    width: 60%;
   }
 
   .column--sm-7 {
@@ -2235,16 +2249,13 @@ input[type=checkbox]:checked:before {
   list-style: none;
   background-color: transparent;
 }
+/* Add Jin 상단 아티클 경로 css 수정 */
 .breadcrumbs > li {
-  font-size: 14px;
+  font-size: 12px;
   color: #818a91;
   display: inline-block;
 }
-/* @media  (max-width: 435px) {
-  .breadcrumbs > li {
-    font-size: 13px;
-  }
-} */
+
 .breadcrumbs > li + li:before {
   content: "› ";
   padding: 0 5px;
@@ -2423,7 +2434,7 @@ input[type=checkbox]:checked:before {
   height: 50px !important;
   padding: 0 55px !important;
   border-color: #fff !important;
-   background-color: rgba(255,255,255,0.75) !important;
+  background-color: rgba(255,255,255,0.75) !important;
   transition: border 0.3s ease, background-color 0.3s ease !important;
   border-radius: 4px !important;
   box-shadow: none !important;
@@ -2542,9 +2553,11 @@ input[type=checkbox]:checked:before {
   margin-top: 0;
   margin-bottom: 0;
 }
+/* Add Jin 검색결과 왼쪽 틀 css */
 .search-results-filters .nav-pills > li > a {
   padding: 12px 15px;
   border-radius: 4px;
+  font-size: 14px;
 }
 .search-results-filters .nav-pills > .active > a,
 .search-results-filters .nav-pills > .active > a:hover {
@@ -3140,12 +3153,12 @@ input[type=checkbox]:checked:before {
   display: none !important;
 }
 
-.topbar__nav--white,
+/* .topbar__nav--white,
 .topbar--small .topbar__nav,
 .topbar__nav--filled {
   background-color: #ffff;
   border-bottom: 1px solid #f1f1f1;
-}
+} */
 
 .topbar__nav--white .topbar_link:hover,
 .topbar__nav--white .topbar__controls > b > a:hover,
@@ -3406,12 +3419,14 @@ input[type=checkbox]:checked:before {
   padding-bottom: 24px;
 }
 
+/* Add Jin 포털 홈 recent article title 타이틀 css */
+
 .recent-articles__title {
-  font-size: 28px;
+  font-size: 22px;
 }
 @media (max-width: 1024px) {
   .recent-articles__title {
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 @media (min-width: 768px) {
@@ -3421,7 +3436,7 @@ input[type=checkbox]:checked:before {
   }
 }
 @media (max-width: 635px) {
-  .recent-articles__title {font-size: 20px;}
+  .recent-articles__title {font-size: 18px;}
 }
 
 .recent-articles__list {
@@ -3442,8 +3457,13 @@ input[type=checkbox]:checked:before {
   color: #93c450;
   font-size: 14px;
 }
+/* Add Jin 솔루션 홈 Recent sub title txt css */
 .recent-articles-item a {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+@media  screen and (max-width: 635px) {
+  .recent-articles-item a {font-size: 16px;}
 }
 
 .popular-posts {
@@ -3653,7 +3673,7 @@ input[type=checkbox]:checked:before {
 .sidenav-section__link {
   display: inline-block;
   color: #222;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .sidenav-category__link {
@@ -3664,13 +3684,16 @@ input[type=checkbox]:checked:before {
 .sidenav-sections {
   display: none;
   margin-bottom: 0;
-  padding-left: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .sidenav-articles {
   display: none;
   margin-bottom: 0;
-  padding-left: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+  word-break: break-word;
 }
 
 .sidenav-sections {
@@ -3689,8 +3712,10 @@ input[type=checkbox]:checked:before {
   display: block;
 }
 
+/* Add Jin ipad mobile sade nav txt css */
+
 .sidenav-section__link {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 12px;
 }
 
@@ -3706,16 +3731,16 @@ input[type=checkbox]:checked:before {
 }
 
 .sidenav-article__link {
-  font-size: 15px;
+  font-size: 14px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   #showhidemenu {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body.sidenav-open {
     position: fixed;
   }
@@ -3725,13 +3750,13 @@ input[type=checkbox]:checked:before {
 #showhidemenu .tcon-menu__lines:before {
     background: #107cd5;
   }
-
+/* ipad mobile 솔루션 네비게이션 css */
   .side-nav {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 10000;
-    width: 80%;
+    width: 50%;
     height: 100%;
     padding: 0;
     margin: 0;
@@ -3780,22 +3805,30 @@ input[type=checkbox]:checked:before {
     padding-left: 20px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .side-nav {
     margin-bottom: 24px;
     border-bottom: 1px solid #dee2e6;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .side-nav {
     border-right: 1px solid #dee2e6;
   }
 }
+
+/* Add Jin ipad mobile side width css */
+
+@media (max-width: 767px) {
+  .side-nav {width: 80%;}
+  
+}
+
 .sidebar-toggle {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .sidebar-toggle {
     display: inline-block;
     margin-bottom: 24px;
@@ -3847,6 +3880,7 @@ input[type=checkbox]:checked:before {
 }
 
 .prevnext__title {
+  font-size: 13px;
   padding: 0 12px;
 }
 
@@ -3991,17 +4025,17 @@ input[type=checkbox]:checked:before {
 
 .category-list-title {
   text-align: center;
-  font-size: 28px;
+  font-size: 22px;
 }
 @media (--screen-xs-max) {
   .category-list-title {
-    font-size: 28px;
+    font-size: 22px;
   }
 }
 @media (max-width: 1024px) {
   .category-list-title {
     margin-bottom: 60px;
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 @media (min-width: 768px) {
@@ -4011,7 +4045,7 @@ input[type=checkbox]:checked:before {
 }
 @media (max-width: 635px) {
   .category-list-title {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 36px;
   }
 }
@@ -4029,10 +4063,10 @@ input[type=checkbox]:checked:before {
     flex-wrap: wrap;
   }
 }
-
+/* Add Jin 솔루션 박스 하단 여백 수정 */
 .category-list-item {
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 @media (min-width: 768px) {
   .category-list-item {
@@ -4046,7 +4080,7 @@ input[type=checkbox]:checked:before {
   padding-left: 84px;
   font-weight: 400;
   color: #276FD0;
-  text-align: left;
+  text-align: center;
   vertical-align: middle;
   background-color: #fff;
   border-radius: 8px;
@@ -4076,11 +4110,6 @@ input[type=checkbox]:checked:before {
   text-transform: uppercase;
 }
 
-.category-list-item__icon {
-  height: 40px;
-  position: absolute;
-  left: 18px;
-}
 .category-list-item__icon svg {
   width: auto;
   height: 100%;
@@ -5367,11 +5396,19 @@ img.fr-rounded {
   margin-bottom: 24px;
   margin-left: 16px;
 }
-
+/* 인기 검색어 css 수정 jin */
 .lt-popular-searches {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: left;
+  margin-top: 50px;
+}
+
+@media  screen and (max-width: 1024px) {
+  .lt-popular-searches {margin-left: 18px; justify-content: left;}
+}
+
+@media screen and (max-width: 635px) {
+  .lt-popular-searches {margin-top: 20px; margin-left: 0px; justify-content: center;}
 }
 
 .popular-searches__list {

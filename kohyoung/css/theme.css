@@ -642,6 +642,9 @@ ul.unstyled {
   min-height: calc(100vh - 490px);
   padding-top: 350px;
 }
+@media (max-width: 635px) {
+  .layout__content {padding-top: 200px;}
+}
 .layout__content:after {
   display: block;
   height: 0;
@@ -1071,7 +1074,11 @@ input[type=checkbox]:checked:before {
 }
 
 @media screen and (max-width: 635px) {
-  .row {margin-left: -17px; margin-right: -15px;}
+  .row {margin-left: 0px; margin-right: 0px;}
+}
+
+@media screen and (max-width: 280px) {
+  .row {margin-left: -10px; margin-right: -10px;}
 }
 
 

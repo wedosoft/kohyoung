@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.bt-alerts {height: 50px;}
+.bt-alerts {height: 40px;}
 /* Add Jin alert height 수정 */
 .bt-alerts .bt-alert {
   max-width: 1180px;

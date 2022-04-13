@@ -51,7 +51,6 @@
                         <li><a href="/support/tickets">My Tickets</a></li>
                         <li><a href="/logout" class="">Sign out</a></li>
                         <li><a href="/support/profile/edit" class="">Edit Profile</a></li>
-                        <li><a href="/en/support/solutions/47000253226" class="">Activity</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -63,25 +62,25 @@
                       </h5>
                       <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
                         <li><a href="https://tr.kohyoung.com/index.php" target="_blank">Kohyoung LMS</a></li>
-                        <li><a href="https://help.kohyoung.com/en/support/discussions/" class="">Forum</a></li>
+                        <li><a href="./discussions/">Forum</a></li>
                         <li><a href="https://kypartner.kohyoung.net/" target="_blank">Partner's page</a></li>
                       </ul>
                     </li>
                   </ul>
                   <ul class="language-options" role="tablist">
-            	    <li class="dropdown">
-              	    	<h5 class="dropdown-toggle" data-toggle="dropdown">
-                	  <span>English</span>
-                	  <span class="caret"></span>
-              		</h5>
-              		<ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
-                	  <li><a href="/en/support/home" class="active"><span class="icon-dd-tick-dark"></span>English</a></li>
-                	  <li><a href="/zh-CN/support/home" class="">Chinese</a></li>
-                	  <li><a href="/ja-JP/support/home" class="">Japanese</a></li>
-                	  <li><a href="/ko/support/home" class="">Korean</a></li>
-              		</ul>
-                    </li>
-          	  </ul>
+            	  	<li class="dropdown">
+              			<h5 class="dropdown-toggle" data-toggle="dropdown">
+                			<span>English</span>
+                			<span class="caret"></span>
+              			</h5>
+              			<ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
+                			<li><a href="/en/support/home" class="active"><span class="icon-dd-tick-dark"></span>English</a></li>
+                			<li><a href="/zh-CN/support/home" class="">Chinese</a></li>
+                			<li><a href="/ja-JP/support/home" class="">Japanese</a></li>
+                			<li><a href="/ko/support/home" class="">Korean</a></li>
+              			</ul>
+            		  </li>
+          			</ul>
                 </div>
               {% endif %}
               </div>
@@ -153,19 +152,19 @@
   .topbar__nav--white {background: black;}
   .topbar__nav--white .topbar_link {color: #ffff;}
   .topbar_link {color: #222; font-size: 18px;}
-  .topbar_link:hover {color: #93c450 !important;}
+  .topbar_link:hover {color: #68b950 !important;}
   
   /* Add Jin Header Dropdown CSS */
   #lan_header {display: flex; cursor: pointer;}
   #lan_header .language-options {margin-left: 1rem; margin-right: 1rem;}
   #lan_header .dropdown-toggle {font-size: 18px !important;}
   .topbar__nav--white #lan_header .dropdown-toggle {color: #ffff;}
-  #lan_header .language-options .dropdown-toggle:hover {color:#93c450;}
-  .topbar--small .topbar_link:hover {color: #93c450;}
+  #lan_header .language-options .dropdown-toggle:hover {color:#68b950;}
+  .topbar--small .topbar_link:hover {color: #68b950;}
   .topbar--small #lan_header {color :#ffff;}
   .dropdown-menu {background: rgb(19 19 19 / 77%);}
   .language-options .dropdown-menu li a {color: #ffff; background: none;}
-  .language-options .dropdown-menu li a:hover {color: #93c450;}
+  .language-options .dropdown-menu li a:hover {color: #68b950;}
   
   /* Add Jin Header Search box txt CSS */ 
   #support-search-input::placeholder {color: #ffff; font-size: 18px !important;}
@@ -225,7 +224,7 @@
     top: 22px;
     font-size: 10px;
   }
-  .hero-bg-box .icon-box li > a:hover {color: #93c450b3;}
+  .hero-bg-box .icon-box li > a:hover {color: #68b950;}
   .hero-bg-box .ficon_txt {display: none; position: absolute; top: 50px; background: #93c450b3; border-radius: 5px; padding: 10px 10px 10px; width: 80%; text-align: center; color: #ffff; line-height: 20px; z-index: 3;}
   
   .hero-bg-box .ficon_txt:after {
@@ -257,8 +256,9 @@
     .topbar__nav--filled .topbar_link, .topbar__controls a {color: #ffff;}
     #lan_header .language-options {padding: 0;}
     .topbar__nav--filled #lan_header .language-options .dropdown-toggle {color: #ffff; text-align: center; padding: 8px !important;}
+    .topbar__nav--filled #lan_header .language-options .dropdown-toggle:hover {color: #68b950;}
     .topbar_link, .topbar__controls a {display: block; text-align: center; padding: 7px 10px; color: #222;}
-    .open .dropdown-menu {
+    #lan_header .open .dropdown-menu {
      position: relative;
      min-width: 100%;
      background: #000;

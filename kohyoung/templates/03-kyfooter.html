@@ -72,12 +72,12 @@
   .text-left {padding-top: 15px;}
   .text-left a {display: block; width: 100%;}
   .footer-container i {font-size: 13px; transform: rotate(45deg);}
-  .text-left a:hover {color: #93c450; transition: all 0.3s;}
+  .text-left a:hover {color: #68b950; transition: all 0.3s;}
   .text-right {margin-top: 8px; cursor: pointer;}
   #lan_footer .language-options .dropdown-toggle {font-weight: 500;}
-  #lan_footer .language-options .dropdown-toggle:hover {color: #93c450;}
+  #lan_footer .language-options .dropdown-toggle:hover {color: #68b950;}
   .dropdown-menu a {color: #ffff;}
-  .dropdown-menu a:hover {color: #93c450;}
+  .dropdown-menu a:hover {color: #68b950;}
   .icon-dd-tick-dark {display: none;}
   .footer-container__col {text-align: left;}
   .welcome {display: none;}
@@ -124,10 +124,18 @@
   .banner-language-selector {float: none !important; margin-top: 0;}
   
    /* Add Jin Top link CSS */     
-  .go-top {position: fixed; bottom: 10px; min-width: 1149px; height: 30px; margin: 0 auto; cursor: pointer; text-align: right; z-index: 3;}
-  .go-top i {font-size: 33px; list-style: none; color: #93c450; transform: rotate(0deg);} 
+  .go-top {position: fixed; bottom: 20px; min-width: 1149px; height: 30px; margin: 0 auto; cursor: pointer; text-align: right; z-index: 3;}
+  .go-top i {font-size: 33px; list-style: none; color: #68b950; transform: rotate(0deg);} 
    @media (max-width: 1220px) {
     .go-top {width: auto; right: 30px;}
+   }
+   @media (max-widdth: 1024px) {
+    #lan_footer .open .dropdown-menu {
+     position: relative;
+     min-width: 100%;
+     background: #000;
+     display: block;
+     }
    }
   /* Add Jin Footer ipad CSS */
    @media (max-width: 991px) {
@@ -136,25 +144,26 @@
     .footer-container__col {padding-left: 15px;}
     .icon-box {display: block; position: relative; right: 0; text-align: center;}
     .icon-box li > i {position: relative; top: -14px;}
-    .icon-box li > a  {display: block;} 
+    .icon-box li > a  {display: block;}  
     .ficon_txt {width: 14%; top: 70px;}
     .go-top {width: auto; right: 30px;}
   	}
-  
-  /* Add Jin Footer Mobile CSS */
-  	@media (max-width: 768px) {
+    @media (max-width: 768px) {
     .go-top i {font-size: 30px;}
 	}
-	@media (max-width: 635px) {
+  
+  /* Add Jin Footer Mobile CSS */
+
+     @media (max-width: 635px) {
     .text-left {font-size: 12px; padding-left: 0px;}
     .footer-container i {font-size: 10px;}
     .text-right {margin-top: 0;}
     .language-options .dropdown-toggle {font-size: 13px;}
     .go-top {width: auto; right: 10px;}
-	  .go-top i {font-size: 30px;}
+    .go-top i {font-size: 30px;}
      
 	}
-	@media (max-width: 45em) {	
+     @media (max-width: 45em) {	
     .footer-container__col {padding-left: 0px; font-size: 10px;}
     .language-options .dropdown-toggle {color: #000;}
     .language-options .dropdown-toggle {padding: 0 !important; margin: 0; text-align: right;}
@@ -165,10 +174,10 @@
     .ficon_txt {top: 70px; font-size: 12px; width: 23%; padding: 5px 5px 5px;}
     .go-top i {font-size: 30px;}
 	}
-  @media (max-width: 280px) {
+    @media (max-width: 280px) {
     .text-left {padding-left: 15px;}
     }
-  
+   
 </style>
 
 

@@ -3,15 +3,12 @@
     <div class="category-page">
       <div class="row clearfix">
         <div class="column column--sm-8">
-          <ol class="breadcrumbs">
+          <ol class="breadcrumbs category-bc">
             <li>
               <a href="{{portal.home_url}}">{% translate header.tabs.home %}</a>
             </li>
             <li title="{% translate portal.solutions_home %}">
               <a href="{{ portal.solutions_home_url }}">{% translate portal.solutions_home %}</a>
-            </li>
-            <li title="{{ category.name | h }}">
-              {{ category.name | h }}
             </li>
           </ol>
         </div>
@@ -23,7 +20,7 @@
       </div>
 
       <div class="header">
-        <h1 class="h2">{{ category.name | h }}</h1>
+        <h1 class="h2 s-c-title">{{ category.name | h }}</h1>
         {% if category.description %}
         <p class="page-description">{{ category.description }}</p>
         {% endif %}
@@ -70,4 +67,10 @@
     transform: translateY(-50%);
     margin: 1px 0 0 8px;
 	}
+  /* Add Jin 솔루션 카테고리 홈 상단 리스트 크기 조정 */
+  .category-bc > li {font-size: 18px;}
+  @media (max-width: 635px) {
+    .category-bc > li {font-size: 16px;}
+  }
+  .s-c-title {text-align: left;}
 </style>

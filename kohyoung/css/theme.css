@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-.bt-alerts {height: 40px;}
 /* Add Jin alert height 수정 */
 .bt-alerts .bt-alert {
   max-width: 1180px;
@@ -103,16 +102,25 @@
 /* Add jin table content css 수정 */
 
 .lt-toc * {
+  z-index: 5;
+  background-color: #ffff;
   box-sizing: border-box;
+  border-radius: 4px;
   font-size: 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .lt-toc * {background: none;}
 }
 
 .lt-toc--list {
   padding-left: 0;
   margin: 0;
-  overflow-y: auto;
+  overflow-y: scroll !important;
   list-style: none;
+  -ms-overflow-style: none;
 }
+.lt-toc--list::-webkit-scrollbar {display: none;}
 
 .lt-toc--link {
   display: block;
@@ -125,6 +133,7 @@
 }
 
 .lt-toc--link.is-active span {
+  background: none;
   color: #fff;
   font-size: 12px;
 }
@@ -133,26 +142,37 @@
   padding: 6px 12px;
 }
 
-.lt-toc_is-desktop {
-  position: relative;
-}
+/* Add Jin table content pc css 조정 */
 
+#sm-desk {position: relative; top: 30px; margin-bottom: 58px;}
+
+.lt-toc_is-desktop {
+  z-index: 3;
+  background: #ffff;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
 .lt-toc_is-desktop .lt-toc--title {
-  margin: 0 0 12px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  padding-top: 8px;
   font-size: 14px;
+  font-weight: bold;
 }
 
 .lt-toc_is-desktop .lt-toc--current {
-  display: none;
+  cursor: pointer;
+  display: block;
 }
 
 .lt-toc_is-desktop .lt-toc--item {
   margin-bottom: 6px;
 }
 
-.lt-toc_is-desktop .lt-toc--list {
+
+/* .lt-toc_is-desktop .lt-toc--list {
   display: block !important;
-}
+} */
 
 .lt-toc_is-desktop .lt-toc--link {
   border-radius: 4px;
@@ -352,7 +372,7 @@ select:focus, input[type="file"]:focus, input[type="radio"]:focus, input[type="c
 }
 textarea, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=search], input[type=tel], input[type=color], .uneditable-input, .redactor_box, .hc-search-input input[type=text] {border-color: #DADFE3 !important;}
 a {
-  color: #276FD0;
+  color: #4673b4;
   text-decoration: none;
 }
 a:hover, a:focus {
@@ -538,7 +558,7 @@ blockquote {
   border-left: 5px solid #f1f1f1;
 }
 blockquote.is-colored {
-  border-left: 5px solid #276FD0;
+  border-left: 5px solid #4673b4;
 }
 blockquote p:last-child,
 blockquote ul:last-child,
@@ -640,10 +660,10 @@ ul.unstyled {
 .layout__content {
   width: 100%;
   min-height: calc(100vh - 490px);
-  padding-top: 350px;
+  padding-top: 200px;
 }
 @media (max-width: 635px) {
-  .layout__content {padding-top: 200px;}
+  .layout__content {padding-top: 150px;}
 }
 .layout__content:after {
   display: block;
@@ -762,8 +782,8 @@ input[type=submit].btn.btn-small:active,
 [data-target="#export-modal"]:hover,
 [data-target="#export-modal"]:focus,
 [data-target="#export-modal"]:active {
-  color: #276FD0;
-  border-color: #276FD0;
+  color: #4673b4;
+  border-color: #4673b4;
   background-color: transparent;
   background-image: none !important;
   box-shadow: none !important;
@@ -811,8 +831,8 @@ input[type=submit].btn.btn-small:focus,
 .hc-search-button .btn.btn-primary:hover,
 .hc-search-button .btn.btn-primary:active,
 .hc-search-button .btn.btn-primary:focus {
-  border-color: #93c450;
-  background-color: #93c450;
+  border-color: #68b950;
+  background-color: #68b950;
   color: #fff;
 }
 
@@ -830,10 +850,12 @@ input[type=submit].btn.btn-small:focus,
 .btn-group > .btn {
   margin-left: -1px;
 }
+/* Add Jin forum view follow css 조정 */
+.btn-group > .btn:last-child, .btn-group>.dropdown-toggle {padding: 6px 12px;}
 
 .dropdown-toggle.btn,
 .dropdown-toggle.btn b {
-  color: #276FD0 !important;
+  color: #4673b4 !important;
   font-size: 12px !important;
   font-weight: 600 !important;
 }
@@ -927,7 +949,7 @@ input[type=submit].btn.btn-small:focus,
 }
 
 .btn [class^=icon-]:before {
-  color: #276FD0;
+  color: #4673b4;
 }
 
 textarea,
@@ -984,25 +1006,63 @@ label {
 }
 /* Add Jin New ticket filled CSS */
 .form-portal .control-label {
+  font-size: 20px;
+  font-weight: 600;
   float: none;
   width: auto;
   padding-top: 0;
   margin-bottom: 6px;
 }
-
+/* Add Jin New ticket New Topic 필수 표시 css */
+label.required:after {color: #68b950;}
 .form-portal .controls {
   margin-left: 0;
 }
+ /* 22.03.08 Add Jin 파일 첨부 CSS 수정 */
+ #attachment-type .attachments-list-wrap {top: 25px;}
+ #attachment-type .add_attachment {
+   text-align: center;
+   border: 2px solid #68b950;
+   border-radius: 5px;
+   color: #68b950;
+   overflow: hidden;
+   position: relative;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 110px;
+   z-index: 1;
+   font-weight: 600;
+ }
+ #attachment-type .hidden_upload input[type="file"] {
+   cursor: pointer;
+   height: 25px;
+   opacity: 0;
+   position: relative;
+   right: 0;
+   top: -27px;
+   width: 110px;
+   font-size: 0;
+   z-index: 1;
+ }
 
 .form-portal .form-actions {
+  text-align: center;
   padding-left: 0;
 }
 .form-actions {
-  padding-top: 24px;
-  border-color: #bdc2c5;
-  border-width: 1px;
+  margin-top: 21.875px;
+  padding-top: 21.875px;
+  margin-bottom: 21.875px;
+  border-top: 1px solid #e5e5e5;
 }
+/* Add Jin 티켓 제출 버튼 css 수정 */
+#helpdesk_ticket_submit {width: 120px; margin-right: 10px; font-size: 16px;}
+.form-actions .btn {width: 120px; font-size: 16px;}
 
+@media (max-width: 280px) {
+  #helpdesk_ticket_submit {width: 100px;}
+  .form-actions .btn {width: 100px;}
+}
 
 .control-group.error-group > label,
 .control-group.error-group .help-block,
@@ -1317,7 +1377,7 @@ input[type=checkbox]:checked:before {
   }
 
   .column--sm-6 {
-    width: 60%;
+    width: 75%;
   }
 
   .column--sm-7 {
@@ -2269,10 +2329,10 @@ input[type=checkbox]:checked:before {
   color: #ccc;
 }
 .breadcrumbs > li a {
-  color: #276FD0;
+  color: #4673b4;
 }
 .breadcrumbs > li:last-child a {
-  color: #276FD0;
+  color: #4673b4;
 }
 
 .breadcrumbs--search-results {
@@ -2331,6 +2391,16 @@ input[type=checkbox]:checked:before {
 
 .language-options .dropdown-menu li a {
   color: #222;
+}
+@media (max-width: 1024px) {
+/* Add Jin 헤더 푸터 드롭다운 반응형 ipad mobile css 추가*/
+ #lan_header .open .dropdown-menu,
+ #lan_footer .open .dropdown-menu {
+    position: relative;
+    min-width: 100%;
+    background: rgba(19, 19, 19, 0.705);
+    display: block;
+ }
 }
 
 @media (max-width: 767px) {
@@ -2569,7 +2639,7 @@ input[type=checkbox]:checked:before {
 .search-results-filters .nav-pills > .active > a,
 .search-results-filters .nav-pills > .active > a:hover {
   box-shadow: none;
-  background-color: #276FD0;
+  background-color: #4673b4;
   color: #fff;
 }
 @media (min-width: 768px) {
@@ -2713,7 +2783,7 @@ input[type=checkbox]:checked:before {
 }
 
 .icon-color-stroke-primary {
-  stroke: #276FD0;
+  stroke: #4673b4;
 }
 
 .icon-color-stroke-secondary {
@@ -2721,7 +2791,7 @@ input[type=checkbox]:checked:before {
 }
 
 .icon-color-fill-primary {
-  fill: #276FD0;
+  fill: #4673b4;
 }
 
 .icon-color-fill-secondary {
@@ -2837,11 +2907,11 @@ input[type=checkbox]:checked:before {
 
 .note-success,
 .note--success {
-  border-color: #276FD0;
+  border-color: #4673b4;
 }
 .note-success .note-title,
 .note--success .note-title {
-  color: #276FD0;
+  color: #4673b4;
 }
 
 .note-danger,
@@ -2976,12 +3046,12 @@ input[type=checkbox]:checked:before {
 .pagination ul > .active > a:hover,
 .pagination ul > .active > a:focus {
   z-index: 2;
-  border-color: #276FD0;
-  background-color: #276FD0;
+  border-color: #4673b4;
+  background-color: #4673b4;
   color: #fff;
   cursor: default;
 }
-
+/* Add Jin Header layout */
 .topbar {
   position: relative;
   width: 100%;
@@ -3020,6 +3090,7 @@ input[type=checkbox]:checked:before {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 5;
+  
 }
 
 .topbar__col {
@@ -3104,7 +3175,7 @@ input[type=checkbox]:checked:before {
 }
 .topbar--small {
   color: #fff;
-  background-color: #276FD0;
+  background-color: #4673b4;
 }
 
 .topbar--small .topbar_link {
@@ -3173,7 +3244,7 @@ input[type=checkbox]:checked:before {
 .topbar--small .topbar__nav .topbar__controls > b > a:hover,
 .topbar__nav--filled .topbar_link:hover,
 .topbar__nav--filled .topbar__controls > b > a:hover {
-  color: #93c450;
+  color: #68b950;
 }
 .topbar__nav--white .lines, .topbar__nav--white .lines:before, .topbar__nav--white .lines:after,
 .topbar--small .topbar__nav .lines,
@@ -3182,49 +3253,20 @@ input[type=checkbox]:checked:before {
 .topbar__nav--filled .lines,
 .topbar__nav--filled .lines:before,
 .topbar__nav--filled .lines:after {
-  background: #276FD0;
+  background: #4673b4;
 }
 
 @media (max-width: 991px) {
   .topbar_link,
-.topbar__controls > b > a {
+  .topbar__controls > b > a {
     display: block;
   }
 
   .topbar_link,
-.topbar__controls > b > a,
-.banner-language-selector {
+  .topbar__controls > b > a,
+  .banner-language-selector {
     padding: 8px;
     text-align: center;
-  }
-}
-.scroll-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: -50px;
-  z-index: 3;
-  font-size: 32px !important;
-  line-height: 45px !important;
-  text-align: center;
-  border: 1px solid #276FD0;
-  border-radius: 4px;
-  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  width: 50px;
-  height: 50px;
-}
-.scroll-to-top:focus, .scroll-to-top:active {
-  outline: 0;
-}
-.scroll-to-top.is-active {
-  bottom: 30px;
-}
-.scroll-to-top:hover {
-  color: #1b4d90;
-  border-color: #1b4d90;
-}
-@media (max-width: 767px) {
-  .scroll-to-top {
-    display: none;
   }
 }
 
@@ -3348,7 +3390,7 @@ input[type=checkbox]:checked:before {
 
 @media (max-width: 767px) {
   #profile-edit .span3.avatar-span,
-#profile-edit .span9.omega {
+  #profile-edit .span9.omega {
     float: none;
     width: 100%;
   }
@@ -3369,7 +3411,7 @@ input[type=checkbox]:checked:before {
 
 .password_cont h3,
 .approval_delegation_user h4 {
-  color: #276FD0 !important;
+  color: #4673b4 !important;
 }
 
 .entry-info {
@@ -3461,7 +3503,7 @@ input[type=checkbox]:checked:before {
 }
 .recent-articles-item .fa-star {
   margin-right: 6px;
-  color: #93c450;
+  color: #68b950;
   font-size: 14px;
 }
 /* Add Jin 솔루션 홈 Recent sub title txt css */
@@ -3658,7 +3700,7 @@ input[type=checkbox]:checked:before {
 .sidenav-category {
   padding-bottom: 12px;
   margin-bottom: 16px;
-  border-bottom: 1px solid rgba(151, 151, 151, 0.2);
+  border-bottom: 1px solid #f6f2f2;
   padding-right: 24px;
 }
 
@@ -3682,9 +3724,9 @@ input[type=checkbox]:checked:before {
   color: #222;
   font-weight: 500;
 }
-
+/* Add Jin acticle view txt 조정 사이즈 */
 .sidenav-category__link {
-  font-size: 20px;
+  font-size: 14px;
   margin-bottom: 12px;
 }
 
@@ -3722,7 +3764,7 @@ input[type=checkbox]:checked:before {
 /* Add Jin ipad mobile sade nav txt css */
 
 .sidenav-section__link {
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 12px;
 }
 
@@ -3738,7 +3780,7 @@ input[type=checkbox]:checked:before {
 }
 
 .sidenav-article__link {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 @media (min-width: 1024px) {
@@ -3820,7 +3862,7 @@ input[type=checkbox]:checked:before {
 }
 @media (min-width: 1024px) {
   .side-nav {
-    border-right: 1px solid #dee2e6;
+    border-right: 1px solid #f6f2f2;
   }
 }
 
@@ -3909,13 +3951,8 @@ input[type=checkbox]:checked:before {
 }
 
 .article__title {
-  font-size: 28px;
+  font-size: 17px;
   font-weight: 600;
-}
-@media (min-width: 768px) {
-  .article__title {
-    font-size: 41px;
-  }
 }
 
 .article-meta {
@@ -4087,7 +4124,7 @@ input[type=checkbox]:checked:before {
   padding: 24px;
   padding-left: 84px;
   font-weight: 400;
-  color: #276FD0;
+  color: #4673b4;
   text-align: center;
   vertical-align: middle;
   background-color: #fff;
@@ -4166,8 +4203,13 @@ input[type=checkbox]:checked:before {
 }
 
 .articles__link {
-  color: #276FD0;
+  color: #4673b4;
 }
+/* Add Jin View all button css */
+.see-all-articles {
+  background: none !important;
+  border: 2px solid #68b950 !important;
+  color: #4673b4 !important;}
 
 #article-author {
   display: none;
@@ -4256,13 +4298,14 @@ input[type=checkbox]:checked:before {
   display: flex;
   flex-wrap: wrap;
 }
-
+/* Add Jin 내 티켓 보기 드롭다운 서브 메뉴 css 수정 */
 #ticket-toolbar a {
   display: inline-block;
   margin: 0;
   line-height: 1.5;
+  background: none;
 }
-
+#ticket-toolbar a:hover {color: #63b450;}
 #new-layout #ticket-toolbar .btn {
   padding: 10px 12px !important;
 }
@@ -4310,7 +4353,7 @@ input[type=checkbox]:checked:before {
 
 .c-list,
 .c-row {
-  border-color: #276FD0;
+  border-color: #4673b4;
 }
 
 .label.label-small {
@@ -4344,13 +4387,14 @@ input[type=checkbox]:checked:before {
 .ticket-page__actions {
   margin-bottom: 24px;
 }
-
+/* Add Jin 티켓 필드 css 수정 */
 .new-ticket-page {
-  margin-bottom: 48px;
+  margin-bottom: 0px;
 }
 
 .new-ticket-title {
   font-size: 24px;
+  font-weight: 600;
 }
 @media (min-width: 768px) {
   .new-ticket-title {
@@ -4359,7 +4403,8 @@ input[type=checkbox]:checked:before {
 }
 @media (min-width: 992px) {
   .new-ticket-title {
-    font-size: 32px;
+    font-size: 30px;
+   
   }
 }
 
@@ -4423,8 +4468,8 @@ input[type=checkbox]:checked:before {
   width: 8px;
   height: 8px;
   margin-top: -4px;
-  border-bottom: 2px solid #276FD0;
-  border-left: 2px solid #276FD0;
+  border-bottom: 2px solid #4673b4;
+  border-left: 2px solid #4673b4;
   transform: rotate(-45deg);
   transition: transform 0.3s;
 }
@@ -4459,7 +4504,7 @@ input[type=checkbox]:checked:before {
   background-color: #818a91;
 }
 .accordion--colored .accordion__item-title--active {
-  background-color: #276FD0;
+  background-color: #4673b4;
   color: #fff;
   transition: background-color 0.3s;
 }
@@ -4537,9 +4582,10 @@ img.fr-rounded {
   border-radius: 100%;
   background-clip: padding-box;
 }
-
+/* Add Jin 솔루션 문서 텍스트 넘김 조정 */
 .callout,
 .fd-callout {
+  overflow: auto;
   padding: 24px 20px;
   margin-bottom: 24px;
   background-color: #f1f1f1;
@@ -4608,8 +4654,8 @@ img.fr-rounded {
 
 .callout--primary {
   color: #fff;
-  background-color: #276FD0;
-  border-color: #1d539c;
+  background-color: #4673b4;
+  border-color: #4673b4;
 }
 .callout--primary .callout__title {
   color: #fff;
@@ -4643,7 +4689,7 @@ img.fr-rounded {
   font-size: 14px;
   width: 30px;
   height: 30px;
-  background-color: #276FD0;
+  background-color: #4673b4;
   border-radius: 50%;
   z-index: 1;
   color: #fff;
@@ -4669,7 +4715,7 @@ img.fr-rounded {
   font-weight: 400;
   font-style: normal;
   content: "\f046";
-  color: #276FD0;
+  color: #4673b4;
 }
 .list-bullet ul {
   list-style: none;
@@ -4796,7 +4842,7 @@ img.fr-rounded {
 }
 
 .table-color-header th {
-  background-color: #276FD0;
+  background-color: #4673b4;
   color: #fff;
 }
 
@@ -4897,7 +4943,7 @@ img.fr-rounded {
   border-color: transparent;
 }
 .tabs-link:hover {
-  color: #276FD0;
+  color: #4673b4;
 }
 @media (max-width: 767px) {
   .tabs-link {
@@ -4922,11 +4968,11 @@ img.fr-rounded {
 
 .tabs-link.is-active {
   border-color: #ddd;
-  color: #276FD0;
+  color: #4673b4;
   cursor: pointer;
 }
 .tabs-link.is-active:hover {
-  color: #276FD0;
+  color: #4673b4;
   cursor: default;
 }
 @media (min-width: 768px) {
@@ -4946,12 +4992,12 @@ img.fr-rounded {
 }
 
 .tabs--colored-2 .tabs-link:hover {
-  color: #276FD0;
+  color: #4673b4;
 }
 .tabs--colored-2 .tabs-link.is-active {
-  background-color: #276FD0;
+  background-color: #4673b4;
   color: #fff;
-  border-color: #276FD0;
+  border-color: #4673b4;
 }
 .tabs--colored-2 .tabs-link.is-active:hover {
   color: #fff;
@@ -4989,7 +5035,7 @@ img.fr-rounded {
 }
 
 .text-success {
-  background-color: #276FD0;
+  background-color: #4673b4;
 }
 
 .fr-text-gray {
@@ -5009,6 +5055,54 @@ img.fr-rounded {
 
 .fr-text-spaced {
   letter-spacing: 1px;
+}
+/* Add Jin 포럼 layout */
+.discussions-title {font-size: 30px;}
+
+/* Add Jin 포럼 topic list css 조정*/
+.forum-title {font-size: 30px;}
+.btn-small {margin-top: -2.5px; line-height: 20.8px;}
+.btn.active, .btn:active {
+  background-color: #4673b4;
+  background-image: none;
+  outline: 0;
+  color: white;
+}
+.forum-buttons a:first-child { 
+  background: #4673b4;
+  color: white;
+  padding: 8.9px 12px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 4px;
+  border-color: #4673b4;
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 15px;
+  font-weight: 600 !important;
+  font-family: "Lato", sans-serif;
+}
+.forum-buttons a:first-child:hover {background-color: #3b5998; border: 2px solid #3b5998;}
+.nav-pills>li>a {font-size: 15px;}
+.nav-pills>li>a:hover {
+  border-radius: 4px;
+  background: none;
+  border: solid 1px #ebeef0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #222;
+}
+@media (max-width: 435px) {
+  .nav-pills>li>a {font-size: 14px;}
+}
+@media (max-width: 375px) {
+  .nav-pills>li>a {font-size: 11px;}
+}
+@media (max-width: 280px) {
+  .forum-page .breadcrumbs li {font-size: 10px;}
+  .nav-tabs>li, .nav-pills>li {float: none;}
+  .nav-pills>li>a {font-size: 14px;}
 }
 
 .forum-topics {
@@ -5042,8 +5136,10 @@ img.fr-rounded {
     margin-bottom: 12px;
   }
 }
+/* Add Jin 포럼 링크 txt size */
 @media (min-width: 768px) {
   .forum-topics__link {
+    font-size: 15px;
     width: 60%;
     padding-right: 15px;
   }
@@ -5095,7 +5191,7 @@ img.fr-rounded {
   display: block;
   padding: 24px 15px;
   border-radius: 4px;
-  background-color: #276FD0;
+  background-color: #4673b4;
   color: #fff;
   text-align: center;
   font-weight: 600;
@@ -5108,7 +5204,7 @@ img.fr-rounded {
   }
 }
 .forum-category-list-item__link:active, .forum-category-list-item__link:focus, .forum-category-list-item__link:hover {
-  background-color: #276FD0;
+  background-color: #4673b4;
   color: #fff;
   text-decoration: none;
 }
@@ -5144,8 +5240,9 @@ img.fr-rounded {
 .forum-list-item__link {
   color: inherit;
 }
-
+/* Add jin forums txt size */
 .forum-category-name {
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -5162,10 +5259,14 @@ img.fr-rounded {
 .forum-filters .nav-pills > .active > a:hover {
   box-shadow: none;
 }
+/* Add Jin forum 사이드 메뉴 css 조정 */
 .forum-filters .nav-pills > .active > a:first-of-type,
 .forum-filters .nav-pills > .active > a:hover:first-of-type {
   margin-left: 0 !important;
-  color: inherit;
+  background: none;
+  border: 2px solid #4673b4;
+  font-size: 15px;
+  border-radius: 4px;
 }
 
 .popular-topics {
@@ -5253,9 +5354,11 @@ img.fr-rounded {
     margin-bottom: 48px;
   }
 }
+/* Add Jin 포럼 주제 생성 텍스트 조정 */
 
 .new-topic-title {
   font-size: 24px;
+  font-weight: 600;
 }
 @media (min-width: 768px) {
   .new-topic-title {
@@ -5264,7 +5367,7 @@ img.fr-rounded {
 }
 @media (min-width: 992px) {
   .new-topic-title {
-    font-size: 40px;
+    font-size: 30px;
   }
 }
 
@@ -5277,6 +5380,17 @@ img.fr-rounded {
     margin-bottom: 48px;
   }
 }
+
+/* Add Jin Topic view file submit css 조정 */
+.topic-page #attachment-type .attachments-list-wrap {top: 0;}
+.topic-page #attachment-type .add_attachment {font-size: 14px;}
+.topic-page #post-submit-button {font-size: 14px;}
+@media  screen and (max-width: 45em) {
+  .topic-page #post-submit-button {padding: 10px 10px !important;}
+}
+.topic-page #new-post-form {font-size: 14px;} 
+/* Add Jin New Topic submit botton css 조정*/
+.new-topic-form .btn-primary {font-size: 16px !important; width: 120px !important;}
 
 .topic {
   position: relative;
@@ -5295,19 +5409,25 @@ img.fr-rounded {
   padding: 10px 12px;
   font-size: 11px;
 }
-
+  /* Add Jin 포럼 주제 보기 Follow 조정 */
+  .toolbar-actions {
+    float: none;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+/* Add Jin 포럼 주제 보기 타이틀 텍스트 조정 */
 .topic__title {
   padding-right: 18px;
   font-size: 24px;
 }
 @media (min-width: 768px) {
   .topic__title {
-    font-size: 28px;
+    font-size: 22px;
   }
 }
 @media (min-width: 992px) {
   .topic__title {
-    font-size: 40px;
+    font-size: 26px;
   }
 }
 
@@ -5386,8 +5506,17 @@ img.fr-rounded {
   margin-bottom: 8px;
 }
 
+/* Add Jin 포럼 주제 보기 위치 3번째 줄 조정 */
+  @media (min-width: 45em) {
+    .cs-g-3:nth-child(3n+3) {
+        width: 30%;
+        float: none !important;
+        margin-right: 0;
+	  }
+  } 
+
 .related-topics .ellipsis a {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -5398,11 +5527,23 @@ img.fr-rounded {
   margin-bottom: 24px;
   border-bottom: 1px solid #f1f1f1;
 }
-
+/* Add Jin 새 주제 만들기 css 수정 */
 .discussions-menu a {
+  padding: 6px;
+  background-color: #4673b4;
+  color: white;
+  border: 2px solid #4673b4;
+  border-radius: 4px;
   display: inline-block;
   margin-bottom: 24px;
   margin-left: 16px;
+  transition: all 0.3s;
+}
+.discussions-menu a:hover {background-color: #3b5998; border: 2px solid #3b5998;}
+@media (max-width: 635px) {
+  .discussions-menu {display: block;}
+  .discussions-menu a {margin-left: 0px;}
+
 }
 /* 인기 검색어 css 수정 jin */
 .lt-popular-searches {
@@ -5459,3 +5600,7 @@ img.fr-rounded {
     display: none;
   }
 }
+
+
+
+ 

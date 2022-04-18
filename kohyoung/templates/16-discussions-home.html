@@ -1,57 +1,97 @@
 <div class="bt-container">
   <div class="bt-container-inner">
-    <div class="discussions-category-page" id="discussions-category-{{category.id}}">
-      <ol class="breadcrumbs">
-        <li>
-          <a href="{{portal.home_url}}">{% translate header.tabs.home %}</a>
-        </li>
-        <li title="{% translate portal.community_forums %}">
-          <a href="{{portal.discussions_home_url}}">{% translate portal.community_forums %}</a>
-        </li>
-      </ol>
-      <h1 class="discussions-category-title"> {{category.name | h}}</h1>
-      
-      {% if category.forums_count > 0 %}
-      <ul class="list-unstyled forum-list">
-        {% for forum in category.forums %}
-        <li class="forum-list-item">
-          <h3 class="h4 forum-list-item__title">
-            <a class="forum-list-item__link" href="{{ forum.url }}">{{ forum.name }}</a>
-          </h3>
+    <div class="discussions-category-list-page"> 
+      <div class="discussions-menu">
+        <h1 class="discussions-title">{% translate portal.community_forums %}</h1>
+        {{ portal | link_to_start_topic }}
+      </div>  
+      <div class="row clearfix">
+        <div class="column column--sm-8 column--md-9">
+        {% for category in portal.forum_categories %}
+            <h2 class="forum-category-name">{{category.name}}</h2>
+          {% if category.forums_count > 0 %}
+            <ul class="list-unstyled forum-list">
+              {% for forum in category.forums %}
+                <li class="forum-list-item">
+                  <h3 class="h4 forum-list-item__title">
+                    <a class="forum-list-item__link" href="{{ forum.url }}">{{ forum.name }}</a>
+                  </h3>
+                  {% if forum.topics_count > 0 %}
+                    <ul class="forum-topics">
+                      {% for topic in forum.topics | limit:5 %}
+                        <li class="forum-topics__item {% if topic.sticky? %} forum-topics__item--sticky {% endif %}">
+                          <a class="forum-topics__link" title="{{topic.title | h}}" href="{{topic.url}}">
+                            {% if topic.sticky? %}
+                              <i class="fa fa-thumb-tack forum-topics__pin" aria-hidden="true"></i>
+                            {% endif %}
+                            {{topic.title | h}}
 
-          {% if forum.topics_count > 0 %}
-          <ul class="forum-topics">
-            {% for topic in forum.topics | limit:5 %}
-            <li class="forum-topics__item {% if topic.sticky? %} forum-topics__item--sticky {% endif %}">
-              <a class="forum-topics__link" title="{{topic.title | h}}" href="{{topic.url}}">
-                {% if topic.sticky? %}
-                  <i class="fa fa-thumb-tack forum-topics__pin" aria-hidden="true"></i>
-                {% endif %}
-                {{topic.title | h}}
-
-                <div class="forum-topics__labels">
-                  {{ topic | topic_labels }}
-                </div>
-              </a>
-              <div class="meta forum-topics__meta">
-                {{ topic | topic_info }}
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-          {% if forum.topics_count > 5 %}
-          <a href="{{ forum.url }}" class="btn btn-primary">
-            {% translate portal.topic.all_topics %} ({{forum.topics_count}})
-          </a>
+                            <div class="forum-topics__labels">
+                              {{ topic | topic_labels }}
+                            </div>
+                          </a>
+                          <div class="meta forum-topics__meta">
+                            {{ topic | topic_info }}
+                          </div>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                    {% if forum.topics_count > 5 %}
+                      <a href="{{ forum.url }}" class="btn btn-primary  see-all-articles">
+                        {% translate portal.topic.all_topics %} ({{forum.topics_count}})
+                      </a>
+                    {% endif %}
+                    {% else %}
+                    <p>{% translate portal.no_topics_in_this_view %}</p>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
           {% endif %}
-          {% else %}
-          <p>{% translate portal.no_topics_in_this_view %}</p>
-          {% endif %}
-        </li>
         {% endfor %}
-      </ul>
-      {% endif %}
-
+        </div>
+        <div class="column column--sm-4 column--md-3">
+          {% if portal.recent_popular_topics.size > 0 %}
+            <section class="popular-topics">
+              <h2 class="h5 popular-topics__title">{% translate portal.popular_topics %}</h2>
+              <div class="meta popular-topics__desc">{% translate portal.showing_recently_popular_topics %}</div>
+              <ul class="list-unstyled popular-topic-list">
+                {% for topic in portal.recent_popular_topics limit:3 %}
+                  <li class="popular-topic-item">
+                    <div class="popular-topic-item__inner">
+                      <h5 class="popular-topic-item__title"><a href="{{topic.url}}">{{topic.title | h}}</a></h5>
+                      <span class="meta popular-topic-item__info">
+                        {{topic | topic_info}}
+                      </span>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+          {% if portal.my_topics.size > 0 %}
+            <section class="my-topics">
+              <h2 class="h5 my-topics__title">{% translate portal.my_topics %}</h2>
+              <div class="meta my-topics__desc">{% translate portal.showing_my_topics %}</div>
+              <ul class="list-unstyled my-topic-list">
+                {% for topic in portal.my_topics limit:3 %}
+                  <li class="my-topic-item">
+                    <div class="my-topic-item__inner">
+                      <h5 class="my-topic-item__title"><a href="{{topic.url}}">{{topic.title | h}}</a></h5>
+                      <span class="meta my-topic-item__info">
+                        {{topic | topic_info}}
+                      </span>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+              {% if portal.my_topics_count > 3 %}
+                <a class="btn btn-primary see-all-articles" href="{{portal.my_topics_url}}">{% translate portal.topic.all_topics %}</a>
+              {% endif %}
+            </section>
+          {% endif %}
+        </div>
+      </div>  
     </div>
   </div>
 </div>

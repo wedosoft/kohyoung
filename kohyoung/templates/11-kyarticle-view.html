@@ -24,7 +24,6 @@
           </div>    
         </div>
       </div>
-
       <div class="row clearfix">
         <div class="column column--sm-3">
           <div class="side-nav">
@@ -76,6 +75,12 @@
                         </b>
                       {% endif %}
                       <div class="meta">{% translate portal.article.modified_on %} {{ article.modified_on | short_day_with_time }}</div>
+                      <span class="print-btn" data-print-article>
+                        <img src="https://helpcenter.kohyoung.net:447/Images/btn/btn_print.png">
+                      </span>
+                      <div id="sm-desk">
+                        <div data-toc></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -107,9 +112,6 @@
 
           <div class="prevnext"></div>
         </div>
-        <div class="column column--sm-3">
-          <div data-toc></div>
-        </div>
       </div>
     </div>
   </div>
@@ -130,13 +132,18 @@
     margin: 1px 0 0 8px;
 }
  /* Add Jin 0307 솔루션 타이틀 텍스트 크기 조정*/
-  .sidenav-category__link {font-size: 16px;}
-  .article__title {font-size: 17px;}
+  .sidenav-category__link {font-size: 14px;}
+  .article__title {font-size: 16px;}
   
-  /* Add Jin 반응형 iPad 조정*/
-  @media (max-width: 991px) {
-    .sidenav-category__link {font-size: 14px;}
-  }
+  /* Add Jin print 버튼 추가 */
+  .print-btn {    
+    display: inline-block;
+    margin-top: 22px;
+    cursor: pointer;
+}
+  /* Add Jin 솔루션 다음 이전 버튼 css 조정 */
+  .prevnext__block .btn-primary {background-color: #ffff !important; color: #4673b4 !important;}
+  
   /* Add Jin 반응형 Mobile 예 아니오 버튼 크기 조정*/
   @media (max-width: 45em) {
     .article-vote .vote-up {padding: 10px 10px;}

@@ -154,6 +154,7 @@
 		$(window).on('scroll resize', function() {
 			var scrolled = $(window).scrollTop();
 			var $topbarNav = $('.topbar__nav');
+			var $tableDesk = $('.lt-toc_is-desktop');
 			if (scrolled > $topbarNav.outerHeight()) {
 				$topbarNav.addClass('topbar__nav--white');
 			} else {
@@ -248,6 +249,12 @@
 	$('.new-ticket-title').text('Submit a request');
 	$('.add_attachment').text('Browser');
 	$('#support-search-input').attr('placeholder','Search');
+	$('.search-box--small').attr('placeholder','Search');
+
+	  //Print article
+	  $(document).on('click', '[data-print-article]', function(){
+		print();
+	  });    
      
 	/**
  * Table of contents for articles v1.8.5
@@ -263,10 +270,10 @@
               <div class="lt-status-widget__indicator__text">${t.status.description}</div>
             </div>`,e.classList.remove("lt-d-none")})})}}}();StatusWidget.render();
 
-			var $topbar = $('[data-topbar]');
+	var $topbar = $('[data-topbar]');
 	var $topbarButtons = $topbar.find('[data-topbar-controls]');
-      var topbarButtonsHTML = $topbarButtons.html();
-      $topbarButtons.html(topbarButtonsHTML.replace(' | ', '').replace(' - ', '').replace('&nbsp;', ''));
+        var topbarButtonsHTML = $topbarButtons.html();
+        $topbarButtons.html(topbarButtonsHTML.replace(' | ', '').replace(' - ', '').replace('&nbsp;', ''));
 
 
 	})(jQuery);

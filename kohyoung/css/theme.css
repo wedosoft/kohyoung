@@ -101,17 +101,15 @@
 
 /* Add jin table content css 수정 */
 
-.lt-toc * {
+.lt-toc.lt-toc_is-desktop * {
   z-index: 5;
-  background-color: #ffff;
   box-sizing: border-box;
-  border-radius: 4px;
   font-size: 12px;
+  left: 80px;
+  top: 290px !important;
 }
 
-@media screen and (max-width: 767px) {
-  .lt-toc * {background: none;}
-}
+.lt-toc.lt-toc_is-mobile * {box-sizing: border-box; font-size: 12px;}
 
 .lt-toc--list {
   padding-left: 0;
@@ -144,14 +142,24 @@
 
 /* Add Jin table content pc css 조정 */
 
-#sm-desk {position: relative; top: 30px; margin-bottom: 58px;}
+#sm-desk {
+	position: absolute;
+    width: 255px;
+    left: -100%;
+    top: 0px;
+    margin-bottom: 58px;
+}
+
+	@media screen and (max-width: 1399px) {
+  		#sm-desk {left: 0px; width: auto;}
+	}
 
 .lt-toc_is-desktop {
   z-index: 3;
-  background: #ffff;
   border: 1px solid #ddd;
   border-radius: 2px;
 }
+.lt-toc--container {background: #ffff; border-radius: 4px; border: 1px solid #d7e4f7;}
 .lt-toc_is-desktop .lt-toc--title {
   margin-bottom: 10px;
   padding-left: 8px;
@@ -859,7 +867,15 @@ input[type=submit].btn.btn-small:focus,
   font-size: 12px !important;
   font-weight: 600 !important;
 }
-
+  /* Add Jin 반응형 Mobile 예 아니오 버튼 크기 조정*/
+  @media (max-width: 45em) {
+    .article-vote .vote-up {padding: 10px 10px;}
+    .article-vote .vote-down {padding: 10px 10px;}
+  }
+  @media (max-width: 390px) {
+    .article-vote .vote-up {display: block; width: 40%; margin: 15px 0 0 0;}
+    .article-vote .vote-down {display: block; width: 40%; margin: 10px 0 0 0;}
+  }
 .article-vote .vote-up:before,
 .article-vote .vote-down:before {
   height: auto;
@@ -887,6 +903,21 @@ input[type=submit].btn.btn-small:focus,
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ /* Add Jin 0308 솔루션 홈 Search 아이콘 추가*/
+ .hc-search-input:before {
+  left: 10px;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  content: "";
+  background: url(https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/kysearch-icon.png) no-repeat;
+  background-size: cover;
+  transform: translateY(-50%);
+  margin: 1px 0 0 8px;
 }
 
 .btn-facebook:before,
@@ -1375,7 +1406,7 @@ input[type=checkbox]:checked:before {
   .column--sm-5 {
     width: 41.6666666667%;
   }
-
+/* Add Jin 솔루션 문서 css 조정 */
   .column--sm-6 {
     width: 75%;
   }
@@ -1970,6 +2001,7 @@ input[type=checkbox]:checked:before {
     margin-left: 100%;
   }
 }
+
 .meta {
   font-size: 14px;
   color: #979797;
@@ -2023,13 +2055,13 @@ input[type=checkbox]:checked:before {
   outline: 0;
   background-color: transparent !important;
 }
-
+ /* Add Jin Mobile Header CSS */
 .lines {
+  background: #276FD0;
   position: relative;
   display: inline-block;
   width: 30px;
   height: 2px;
-  background: #fff;
   border-radius: 2px;
   transition: 0.3s;
 }
@@ -2041,7 +2073,7 @@ input[type=checkbox]:checked:before {
   display: inline-block;
   width: 30px;
   height: 2px;
-  background: #fff;
+  background: #276FD0;;
   border-radius: 2px;
   transition: 0.3s;
 }
@@ -2080,7 +2112,7 @@ input[type=checkbox]:checked:before {
   transform: scale3d(0.8, 0.8, 0.8);
 }
 .lines-button.is-active .lines {
-  background: transparent;
+  background: none !important;
 }
 .lines-button.is-active .lines:before, .lines-button.is-active .lines:after {
   top: 0;
@@ -2367,11 +2399,14 @@ input[type=checkbox]:checked:before {
   }
 }
 
+
 .banner-language-selector {
-  float: none !important;
-  margin-top: 0;
+  display: flex !important;
+  float: right !important;
   color: currentColor !important;
+  margin-top: 0px;
 }
+
 
 .language-options {
   margin-bottom: 0;
@@ -2380,28 +2415,30 @@ input[type=checkbox]:checked:before {
 }
 
 .language-options .dropdown-toggle {
+  cursor: pointer;
+  margin-right: 2rem;
   margin-bottom: 0;
   transition: color 0.5s ease;
   line-height: 1.5 !important;
 }
+.language-options .dropdown-toggle:hover {color: #68b950 !important;}
 
 .language-options .dropdown .caret {
   margin-top: 12px;
 }
 
+/* Add Jin 헤더 푸터 드롭다운 css 수정*/
+
+.language-options .dropdown-menu {background: #000;}
+
 .language-options .dropdown-menu li a {
-  color: #222;
+  background: none;
+  color: #ffff;
 }
-@media (max-width: 1024px) {
-/* Add Jin 헤더 푸터 드롭다운 반응형 ipad mobile css 추가*/
- #lan_header .open .dropdown-menu,
- #lan_footer .open .dropdown-menu {
-    position: relative;
-    min-width: 100%;
-    background: rgba(19, 19, 19, 0.705);
-    display: block;
- }
-}
+.language-options .dropdown-menu li a:hover {color: #68b950;}
+
+.pull-right {border: none; background: none; margin-top: 0px; font-weight: normal; text-transform: none; font-size: 16px;}
+.pull-right .dropdown-menu {padding: 3px 24px;}
 
 @media (max-width: 767px) {
   .language-options {
@@ -2412,6 +2449,9 @@ input[type=checkbox]:checked:before {
     display: block;
     text-align: center;
   }
+}
+@media (max-width: 45em) {
+  .language-options .dropdown-toggle {padding: 0 !important; margin-bottom: 10px;}
 }
 .avatar {
   position: relative;
@@ -2575,6 +2615,20 @@ input[type=checkbox]:checked:before {
 }
 .search-box--small .hc-search-input {
   width: 100%;
+}
+ /* Add Jin 0307 솔루션 아티클 Search 아이콘 추가*/
+.search-box--small .hc-search-input:before {
+  left: 10px;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  content: "";
+  background: url(https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/kysearch-icon.png) no-repeat;
+  background-size: cover;
+  transform: translateY(-50%);
+  margin: 1px 0 0 8px;
 }
 .search-box--small .hc-search-button {
   display: none;
@@ -3057,17 +3111,21 @@ input[type=checkbox]:checked:before {
   width: 100%;
   color: #fff;
 }
+
+
+.topbar .welcome {display: none;}
 .topbar .welcome,
 .topbar a[href="/signup"] {
   display: none;
 }
 
-.topbar,
-.language-options .dropdown-toggle {
-  color: #222;
-  font-weight: 600;
-  font-size: 16px;
-}
+.topbar.topbar--home .btn-topbar, .topbar.topbar--home .topbar__controls>b>a {font-size: 18px; font-weight: 600; margin-left: 1rem;}
+.btn.btn-topbar, .topbar .topbar__controls>b>a, .topbar .banner-language-selector .dropdown-toggle {font-size: 18px; font-weight: 600; color: #222;}
+
+/* Add Jin Header layout welcome 프로필 수정 로그인 히든처리 */
+.topbar__controls>b>a[href*='/profile/edit'], .topbar__controls>b>a[href*='/logout'] {display: none;}
+
+
 
 
 .topbar__container-inner {
@@ -3088,7 +3146,6 @@ input[type=checkbox]:checked:before {
 .topbar__nav {
   position: fixed;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 5;
   
 }
@@ -3130,9 +3187,9 @@ input[type=checkbox]:checked:before {
 
 @media (min-width: 992px) {
   .topbar__controls {
-    display: flex;
     align-items: center;
     float: right;
+    font-size: 0px;
   }
 }
 .topbar__controls > b:last-of-type > a {
@@ -3150,6 +3207,7 @@ input[type=checkbox]:checked:before {
   .topbar__collapse {
     display: block !important;
   }
+  .topbar__collapse .top_link {color: #ffff;}
 }
 
 @media (max-width: 991px) {
@@ -3160,15 +3218,18 @@ input[type=checkbox]:checked:before {
 
 .topbar_link,
 .topbar__controls > b > a {
+  font-size: 18px;
   color: #222;
+  font-weight: 600;
   transition: color 0.5s ease;
 }
 .topbar_link:hover,
 .topbar__controls > b > a:hover {
-  color: #e0e0e0;
+  color: #68b950 !important;
 }
 
 @media (min-width: 992px) {
+  .topbar__controls > * {display: inline-block; vertical-align: middle;}
   .topbar__controls > * + * {
     margin-left: 1rem;
   }
@@ -3230,13 +3291,22 @@ input[type=checkbox]:checked:before {
 .topbar__controls--anonymous > b:last-child {
   display: none !important;
 }
+/* Add Jin Header layout text css 수정 */
+.topbar__nav, .topbar--small .topbar__nav--filled {background-color: #ffff;}
 
-/* .topbar__nav--white,
-.topbar--small .topbar__nav,
+.topbar__nav .topbar_link,
+.topbar__controls>b>a, .topbar .banner-language-selector .dropdown-toggle,
+.topbar--small .topbar__controls>b>a, .topbar--small .banner-language-selector .dropdown-toggle {color: #222;}
+
+.topbar__nav--white,
+.topbar--small .topbar__nav--white,
 .topbar__nav--filled {
-  background-color: #ffff;
-  border-bottom: 1px solid #f1f1f1;
-} */
+  background-color: #000;
+}
+/* Add Jin Header layout hover text css 추가 */
+.topbar__nav--white .topbar_link,
+.topbar__nav--white .topbar__controls>b>a, .topbar__nav--white .banner-language-selector .dropdown-toggle,
+.topbar--small .topbar__nav--white .topbar__controls>b>a, .topbar--small .topbar__nav--white .banner-language-selector .dropdown-toggle {color: #ffff;}
 
 .topbar__nav--white .topbar_link:hover,
 .topbar__nav--white .topbar__controls > b > a:hover,
@@ -3257,6 +3327,7 @@ input[type=checkbox]:checked:before {
 }
 
 @media (max-width: 991px) {
+  .topbar__controls>b>a[href*='/profile/edit'], .topbar__controls>b>a[href*='/logout'] {display: none !important;}
   .topbar_link,
   .topbar__controls > b > a {
     display: block;
@@ -3265,9 +3336,13 @@ input[type=checkbox]:checked:before {
   .topbar_link,
   .topbar__controls > b > a,
   .banner-language-selector {
-    padding: 8px;
+    display: block !important;
+    float: none !important;
+    margin: 0 auto 10px;
     text-align: center;
   }
+  .topbar__controls {font-size: 0px;}
+  .language-options .dropdown-toggle {margin-right: 0px; margin-bottom: 10px;}
 }
 
 @-ms-viewport {
@@ -3489,6 +3564,8 @@ input[type=checkbox]:checked:before {
 }
 
 .recent-articles__list {
+  width: auto !important;
+  word-break: unset !important;
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -3712,6 +3789,8 @@ input[type=checkbox]:checked:before {
   display: block;
 }
 
+.sidenav-category__link {font-size: 14px;}
+
 .sidenav-category__link,
 .sidenav-section__link,
 .sidenav-article__link {
@@ -3912,6 +3991,12 @@ input[type=checkbox]:checked:before {
   margin-bottom: 24px;
 }
 
+/* Add Jin 솔루션 다음 이전 버튼 css 조정 */
+.prevnext__block .btn-primary {
+  background-color: #ffff !important; 
+  color: #4673b4 !important;
+}
+
 .prevnext__block--prev {
   float: left;
 }
@@ -3951,7 +4036,7 @@ input[type=checkbox]:checked:before {
 }
 
 .article__title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -3964,6 +4049,12 @@ input[type=checkbox]:checked:before {
 .article-meta__col {
   display: table-cell;
   vertical-align: top;
+}
+/* Add Jin print css 추가 */
+.print-btn {    
+  display: inline-block;
+  margin-top: 22px;
+  cursor: pointer;
 }
 
 .article__body {
@@ -4095,6 +4186,8 @@ input[type=checkbox]:checked:before {
   }
 }
 
+.category-list-title a {color: #222;}
+
 .category-list {
   padding-left: 0;
   margin-bottom: 0;
@@ -4108,6 +4201,7 @@ input[type=checkbox]:checked:before {
     flex-wrap: wrap;
   }
 }
+.column--sm-home {width: 25%;}
 /* Add Jin 솔루션 박스 하단 여백 수정 */
 .category-list-item {
   position: relative;
@@ -4118,18 +4212,49 @@ input[type=checkbox]:checked:before {
     height: 120px !important;
   }
 }
+/* Add Jin 반응형 iPad 포털 홈 Knowledge base icon txt CSS */
+@media (max-width: 1024px) {
+  .column--sm-home {width: 33.3%;}
+  .category-list-item__icon {text-align: center;}
+  .category-list-item__icon img {height: 30px;}
+  .cli-txt {font-size: 12px;}
+}
+@media (max-width: 768px) {
+  .column--sm-home {width: 50%;}
+  .category-list-item__icon {left: 23.3%; text-align: center;}
+}
+/* Add Jin 반응형 Mobile 포털 홈 Knowledge base icon txt CSS */
+@media (max-width: 635px) {
+  .column--sm-home {width: 50%;}
+ 
+}
+
+@media (max-width: 435px) {
+  .column--sm-home {width: 100%;}
+  .category-list-item__icon {float: left;}
+  .category-list-item__icon img {height: 35px; margin-top: -5px;}
+  .cli-txt {font-size: 14px; padding-top: 0px;}
+}
+ @media (max-width: 280px) {
+  .column--sm-home {width: 100%;}
+  .category-list-item__icon img {height: 25px; margin-top: -5px;}
+  .cli-txt {font-size: 12px; padding-top: 0px;}
+}
+
+/* Add Jin 포털 솔루션 홈 솔루션 문서 링크 css 조정*/
 
 .category-list-item__link {
   display: block;
-  padding: 24px;
-  padding-left: 84px;
+  padding: 20px 30px;
   font-weight: 400;
-  color: #4673b4;
-  text-align: center;
-  vertical-align: middle;
+  color: #666;
   background-color: #fff;
   border-radius: 8px;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+
 }
 .category-list-item__link .meta {
   font-size: 16px;
@@ -4144,16 +4269,57 @@ input[type=checkbox]:checked:before {
   }
 }
 .category-list-item__link .meta {
+  display: none;
   margin-bottom: 0;
 }
 
+/* Add Jin 포털 솔루션 홈 솔루션 문서 아이템 타이틀 css 조정*/
+
 .category-list-item__title {
-  margin-bottom: 8px;
-  font-weight: 600;
-  font-size: 16px;
+  display: inline-block;
+  padding-top: 10px;
+  margin-bottom: 0px;
+  font-weight: 300;
+  font-size: 14px;
   color: #222;
   text-transform: uppercase;
 }
+/* Add Jin 솔루션 문서 아이템 아이콘 css 조정*/
+.category-list-item__icon {
+  display: block;
+  text-align: center;
+}
+.icon_txt {
+  display: none; 
+  position: absolute; 
+  top: 100px; 
+  right: 30px; 
+  background: #93c450e8; 
+  border-radius: 5px; 
+  padding: 10px 10px 10px; 
+  width: 200px; 
+  text-align: center; 
+  color: #ffff; 
+  line-height: 20px; 
+  z-index: 3; 
+  font-size: 12px;
+}
+.icon_txt:after {
+  position: absolute;
+  top: -15px;
+  left: 20%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border: solid transparent;
+  border-bottom-color: #93c450e8;
+  border-width: 8px;
+  pointer-events: none;
+  content: ' ';
+}
+.category-list-item__icon:hover .icon_txt {display: block;}
+
+.category-list-item__icon img {height: 40px;}
 
 .category-list-item__icon svg {
   width: auto;
@@ -4192,8 +4358,10 @@ input[type=checkbox]:checked:before {
 .folder__title-link {
   color: inherit;
 }
-
+/* Add Jin 솔루션 카테고리 아티클 조정 */
 .articles {
+  word-break: break-all;
+  width: 240px;
   list-style: none;
   padding-left: 0;
 }
@@ -5264,7 +5432,7 @@ img.fr-rounded {
 .forum-filters .nav-pills > .active > a:hover:first-of-type {
   margin-left: 0 !important;
   background: none;
-  border: 2px solid #4673b4;
+  border: 2px solid #b8c7dd;
   font-size: 15px;
   border-radius: 4px;
 }
@@ -5545,11 +5713,12 @@ img.fr-rounded {
   .discussions-menu a {margin-left: 0px;}
 
 }
-/* 인기 검색어 css 수정 jin */
+/* Add Jin 인기 검색어 css 수정 */
 .lt-popular-searches {
   display: flex;
   justify-content: left;
   margin-top: 50px;
+  font-weight: 600;
 }
 
 @media  screen and (max-width: 1024px) {
@@ -5572,6 +5741,7 @@ img.fr-rounded {
 }
 
 .popular-searches__item a {
+  font-weight: 600;
   color: #ffffff;
   text-decoration: underline;
   transition: opacity 0.1s ease-in-out 0.1s;

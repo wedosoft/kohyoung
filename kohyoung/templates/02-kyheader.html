@@ -6,7 +6,7 @@
 
 
 
-<header class="topbar {% if portal.current_page == 'portal_home' or portal.current_page == 'search' %}topbar--large{% else %}topbar--small{% endif %}" data-topbar>
+<header class="topbar topbar--home {% if portal.current_page == 'portal_home' or portal.current_page == 'search' %}topbar--large{% else %}topbar--small{% endif %}" data-topbar>
   <div class="topbar__nav ">
     <div class="bt-container">
       <div class="bt-container-inner topbar__container-inner">
@@ -38,7 +38,7 @@
                     Submit a request
                 {% endcase %}
                 </a>
-                <a class="topbar_link" href="https://help.kohyoung.com/a/">Agent Portal</a>
+                {{portal | welcome_navigation}}
                 {% if portal.user.id %}
                 <div class="banner-language-selector banner-user-dropdown pull-right" id="lan_header" data-tabs="tabs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="">
                   <ul class="language-options" role="tablist">
@@ -57,7 +57,7 @@
                   <ul class="language-options" role="tablist">
                     <li class="dropdown">
                       <h5 class="dropdown-toggle" data-toggle="dropdown">
-                        <span>Family Site</span>
+                        <span id="family-site">Family Site</span>
                         <span class="caret"></span>
                       </h5>
                       <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
@@ -67,20 +67,6 @@
                       </ul>
                     </li>
                   </ul>
-                  <ul class="language-options" role="tablist">
-            	  	<li class="dropdown">
-              			<h5 class="dropdown-toggle" data-toggle="dropdown">
-                			<span>English</span>
-                			<span class="caret"></span>
-              			</h5>
-              			<ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
-                			<li><a href="/en/support/home" class="active"><span class="icon-dd-tick-dark"></span>English</a></li>
-                			<li><a href="/zh-CN/support/home" class="">Chinese</a></li>
-                			<li><a href="/ja-JP/support/home" class="">Japanese</a></li>
-                			<li><a href="/ko/support/home" class="">Korean</a></li>
-              			</ul>
-            		  </li>
-          			</ul>
                 </div>
               {% endif %}
               </div>
@@ -145,34 +131,12 @@
   {% endif %}
 
 </header>
-<style>
+<style>  
   /* Add Jin Header CSS */
   .layout {height: auto;}
-  .topbar__nav {border-bottom: 0;}
-  .topbar__nav--white {background: black;}
-  .topbar__nav--white .topbar_link {color: #ffff;}
-  .topbar_link {color: #222; font-size: 18px;}
-  .topbar_link:hover {color: #68b950 !important;}
-  
-  /* Add Jin Header Dropdown CSS */
-  #lan_header {display: flex; cursor: pointer;}
-  #lan_header .language-options {margin-left: 1rem; margin-right: 1rem;}
-  #lan_header .dropdown-toggle {font-size: 18px !important;}
-  .topbar__nav--white #lan_header .dropdown-toggle {color: #ffff;}
-  #lan_header .language-options .dropdown-toggle:hover {color:#68b950;}
-  .topbar--small .topbar_link:hover {color: #68b950;}
-  .topbar--small #lan_header {color :#ffff;}
-  .dropdown-menu {background: rgb(19 19 19 / 77%);}
-  .language-options .dropdown-menu li a {color: #ffff; background: none;}
-  .language-options .dropdown-menu li a:hover {color: #68b950;}
-  
+    
   /* Add Jin Header Search box txt CSS */ 
   #support-search-input::placeholder {color: #ffff; font-size: 18px !important;}
-  
-  /* Add Jin Mobile Header CSS */
-  .lines {background: #276FD0;}
-  .lines:before, .lines:after {background: #276FD0;}
-  .topbar__collapse .top_link {color: #ffff;}
   
   /* Add Jin Background CSS */
   .hero-bg-box {
@@ -250,15 +214,7 @@
     
   }
   @media (max-width: 1024px) {
-    .topbar__nav--white.lines {color #ffff;}
-    .topbar__nav--white.lines:before, .lines:after {color: #ffff;}
-    .topbar__nav--filled {background: black;}
-    .topbar__nav--filled .topbar_link, .topbar__controls a {color: #ffff;}
-    #lan_header .language-options {padding: 0;}
-    .topbar__nav--filled #lan_header .language-options .dropdown-toggle {color: #ffff; text-align: center; padding: 8px !important;}
-    .topbar__nav--filled #lan_header .language-options .dropdown-toggle:hover {color: #68b950;}
-    .topbar_link, .topbar__controls a {display: block; text-align: center; padding: 7px 10px; color: #222;}
-    #lan_header .open .dropdown-menu {
+    .open .dropdown-menu {
      position: relative;
      min-width: 100%;
      background: #000;
@@ -270,8 +226,6 @@
   }
 
   @media (max-width: 991px) {
-  	.dropdown-toggle .caret {margin-top: 8px; margin-right: 0; right: auto;}
-    #lan_header {display: block; text-align: center;}
     .hero-bg {top: 78px;}
     .hero-bg-box .icon-box {right: 100px;}
     .hero-bg-box .ficon_txt {width: 70%;}
@@ -287,10 +241,7 @@
   
   @media (max-width: 435px) {
     .logo img {max-height: 40px !important;}
-    #lan_header .language-options {top: 0;}
-    #lan_header .language-options .dropdown-toggle {_color: #ffff; text-align: center; padding: 8px !important;}
     .dropdown-menu a {font-size: 14px;}
-    #lan_header .language-options .dropdown-toggle {color: #ffff;} 
     .hero-bg-box {padding: calc(150px + 7%) 15px 10%;}
     .hero-bg {background: url('https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/MOI%20mobile.jpg') no-repeat center; background-position: 33% 0% !important;}
     .hero-bg-box .ficon_txt {width: 38%;}

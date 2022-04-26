@@ -2437,7 +2437,8 @@ input[type=checkbox]:checked:before {
 }
 .language-options .dropdown-menu li a:hover {color: #68b950;}
 
-.pull-right {border: none; background: none; margin-top: 0px; font-weight: normal; text-transform: none; font-size: 16px;}
+.pull-right {border: none; background: none; margin-top: 0px; font-weight: normal; text-transform: none; font-size: 16px; float: none;}
+.pull-right:hover {color: #63b450;}
 .pull-right .dropdown-menu {padding: 3px 24px;}
 
 @media (max-width: 767px) {
@@ -3121,7 +3122,10 @@ input[type=checkbox]:checked:before {
 
 .topbar.topbar--home .btn-topbar, .topbar.topbar--home .topbar__controls>b>a {font-size: 18px; font-weight: 600; margin-left: 1rem;}
 .btn.btn-topbar, .topbar .topbar__controls>b>a, .topbar .banner-language-selector .dropdown-toggle {font-size: 18px; font-weight: 600; color: #222;}
-
+@media screen and (max-width: 435px) {
+  .topbar.topbar--home .btn-topbar, .topbar.topbar--home .topbar__controls>b>a {font-size: 16px;}
+  .btn.btn-topbar, .topbar .topbar__controls>b>a, .topbar .banner-language-selector .dropdown-toggle {font-size: 16px;}
+}
 /* Add Jin Header layout welcome 프로필 수정 로그인 히든처리 */
 .topbar__controls>b>a[href*='/profile/edit'], .topbar__controls>b>a[href*='/logout'] {display: none;}
 
@@ -3222,6 +3226,10 @@ input[type=checkbox]:checked:before {
   color: #222;
   font-weight: 600;
   transition: color 0.5s ease;
+}
+@media screen and (max-width: 435px) {
+  .topbar_link,
+  .topbar__controls > b > a {font-size: 16px;}
 }
 .topbar_link:hover,
 .topbar__controls > b > a:hover {
@@ -4205,7 +4213,7 @@ input[type=checkbox]:checked:before {
 /* Add Jin 솔루션 박스 하단 여백 수정 */
 .category-list-item {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 90px;
 }
 @media (min-width: 768px) {
   .category-list-item {
@@ -4215,9 +4223,6 @@ input[type=checkbox]:checked:before {
 /* Add Jin 반응형 iPad 포털 홈 Knowledge base icon txt CSS */
 @media (max-width: 1024px) {
   .column--sm-home {width: 33.3%;}
-  .category-list-item__icon {text-align: center;}
-  .category-list-item__icon img {height: 30px;}
-  .cli-txt {font-size: 12px;}
 }
 @media (max-width: 768px) {
   .column--sm-home {width: 50%;}
@@ -4226,19 +4231,13 @@ input[type=checkbox]:checked:before {
 /* Add Jin 반응형 Mobile 포털 홈 Knowledge base icon txt CSS */
 @media (max-width: 635px) {
   .column--sm-home {width: 50%;}
- 
 }
 
 @media (max-width: 435px) {
   .column--sm-home {width: 100%;}
-  .category-list-item__icon {float: left;}
-  .category-list-item__icon img {height: 35px; margin-top: -5px;}
-  .cli-txt {font-size: 14px; padding-top: 0px;}
 }
  @media (max-width: 280px) {
   .column--sm-home {width: 100%;}
-  .category-list-item__icon img {height: 25px; margin-top: -5px;}
-  .cli-txt {font-size: 12px; padding-top: 0px;}
 }
 
 /* Add Jin 포털 솔루션 홈 솔루션 문서 링크 css 조정*/
@@ -4293,16 +4292,33 @@ input[type=checkbox]:checked:before {
   display: none; 
   position: absolute; 
   top: 100px; 
-  right: 30px; 
+  right: 10px; 
   background: #93c450e8; 
   border-radius: 5px; 
   padding: 10px 10px 10px; 
-  width: 200px; 
+  width: 240px; 
   text-align: center; 
   color: #ffff; 
   line-height: 20px; 
   z-index: 3; 
   font-size: 12px;
+  text-transform: none;
+}
+
+@media (max-width: 1024px) {
+  .category-list-item__icon {text-align: center;}
+  .category-list-item__icon img {height: 30px;}
+}
+@media (max-width: 768px) {
+  .category-list-item__icon {left: 23.3%; text-align: center;}
+}
+@media screen and (max-width: 435px) {
+  .icon-txt {top: 55px;}
+}
+@media  screen and (max-width: 280px){
+  .category-list-item__title {font-size: 12px;}
+  .icon-txt {top: 90px;}
+  
 }
 .icon_txt:after {
   position: absolute;
@@ -4320,6 +4336,15 @@ input[type=checkbox]:checked:before {
 .category-list-item__icon:hover .icon_txt {display: block;}
 
 .category-list-item__icon img {height: 40px;}
+
+@media (max-width: 435px) {
+  .category-list-item__icon img {height: 35px; margin-top: -5px;}
+  .cli-txt {font-size: 14px; padding-top: 0px;}
+}
+ @media (max-width: 280px) {
+  .category-list-item__icon img {height: 25px; margin-top: -5px;}
+  .cli-txt {font-size: 12px; padding-top: 0px;}
+}
 
 .category-list-item__icon svg {
   width: auto;
@@ -4472,6 +4497,8 @@ input[type=checkbox]:checked:before {
   margin: 0;
   line-height: 1.5;
   background: none;
+  color: #222;
+  font-size: 13px;
 }
 #ticket-toolbar a:hover {color: #63b450;}
 #new-layout #ticket-toolbar .btn {
@@ -4506,6 +4533,7 @@ input[type=checkbox]:checked:before {
 #ticket-sub-toolbar {
   margin-bottom: 16px;
 }
+
 
 #ticket-export-button {
   display: inline-block !important;

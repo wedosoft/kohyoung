@@ -62,7 +62,7 @@
                       </h5>
                       <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
                         <li><a href="https://tr.kohyoung.com/index.php" target="_blank">Kohyoung LMS</a></li>
-                        <li><a href="./discussions/">Forum</a></li>
+                        <li id="forum"><a href="./discussions/">Forum</a></li>
                         <li><a href="https://kypartner.kohyoung.net/" target="_blank">Partner's page</a></li>
                       </ul>
                     </li>
@@ -115,7 +115,7 @@
    		<!-- Add Jin Background -->
       <div class="hero-bg-box">
         <div class="hero-bg" data-hero-bg=""></div>
-   		  <!-- Add Jin Background END -->
+   		<!-- Add Jin Background END -->
         <div class="bt-container-inner search-box search-box--hero-unit" data-search-box>
           {% snippet search_form %} 
           <div class="lt-popular-searches">
@@ -163,23 +163,15 @@
   }
   
   .hero-bg-box .search-box {top: 100px;}
-
+  
+  
   /* Add Jin Header 반응형 iPad CSS */
   @media (max-width: 1280px) {
     .hero-bg {background-position: 30% 80%;}
     .hero-bg-box .search-box {top: 0px;}
     
   }
-  @media (max-width: 1024px) {
-    .open .dropdown-menu {
-     position: relative;
-     min-width: 100%;
-     background: #000;
-     display: block;
-     }
-    .hero-bg-box {margin-top: 0px;}
-    .hero-bg-box .search-box {top: 0px;}
-  }
+
 
   @media (max-width: 991px) {
     .hero-bg {top: 78px;}
@@ -193,7 +185,6 @@
   
   @media (max-width: 435px) {
     .logo img {max-height: 40px !important;}
-    .dropdown-menu a {font-size: 14px;}
     .hero-bg-box {padding: calc(150px + 7%) 15px 10%;}
     .hero-bg {background: url('https://raw.githubusercontent.com/wedosoft/kohyoung/main/%EA%B3%A0%EC%98%81_%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9D%B4%EB%AF%B8%EC%A7%80/MOI%20mobile.jpg') no-repeat center; background-position: 33% 0% !important;}
   }

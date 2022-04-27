@@ -375,7 +375,7 @@ select:focus, input[type="file"]:focus, input[type="radio"]:focus, input[type="c
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
   outline: 0; 
-  border-color: #DADFE3;
+  border-color: #DADFE3 !important;
   box-shadow: none;
 }
 textarea, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=search], input[type=tel], input[type=color], .uneditable-input, .redactor_box, .hc-search-input input[type=text] {border-color: #DADFE3 !important;}
@@ -605,6 +605,7 @@ address {
 }
 
 .list-unstyled {
+  word-break: break-all;
   list-style: none;
   padding-left: 0;
 }
@@ -688,6 +689,33 @@ ul.unstyled {
 .layout__header,
 .layout__footer {
   flex: none;
+}
+/* Add Jin check box css 수정 */
+input[type="radio"]:checked:before {
+  width: 13px;
+  height: 13px;
+  top: 0px;
+  left: 0px;
+  position: relative;
+  background-color: #63b450;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: none;
+}
+
+input[type="radio"]:before {
+  width: 13px;
+  height: 13px;
+  border-radius: 15px;
+  top: 0px;
+  left: 0px;
+  position: relative;
+  background-color: #fff;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #DADFE3;
 }
 
 .btn,
@@ -2352,13 +2380,20 @@ input[type=checkbox]:checked:before {
 .breadcrumbs > li {
   font-size: 12px;
   color: #818a91;
-  display: inline-block;
+  display: inline-flex;
 }
 
 .breadcrumbs > li + li:before {
   content: "› ";
   padding: 0 5px;
   color: #ccc;
+}
+@media  screen and (max-width: 375px) {
+  .breadcrumbs > li + li:before {
+    content: "› ";
+    padding: 0 0px;
+    color: #ccc;
+  }
 }
 .breadcrumbs > li a {
   color: #4673b4;
@@ -2438,8 +2473,13 @@ input[type=checkbox]:checked:before {
 .language-options .dropdown-menu li a:hover {color: #68b950;}
 
 .pull-right {border: none; background: none; margin-top: 0px; font-weight: normal; text-transform: none; font-size: 16px; float: none;}
+@media screen and (max-width: 635px) {
+  .pull-right {font-size: 14px;}
+  #lan_footer .pull-right {font-size: 12px;}
+}
 .pull-right:hover {color: #63b450;}
-.pull-right .dropdown-menu {padding: 3px 24px;}
+.pull-right .dropdown-menu {padding: 2px; min-width: auto;}
+
 
 @media (max-width: 767px) {
   .language-options {
@@ -2527,6 +2567,7 @@ input[type=checkbox]:checked:before {
   float: none !important;
 }
 
+/* Add Jin serach box css */
 .search-box {
   position: relative;
 }
@@ -2556,6 +2597,9 @@ input[type=checkbox]:checked:before {
   transition: border 0.3s ease, background-color 0.3s ease !important;
   border-radius: 4px !important;
   box-shadow: none !important;
+  color: #4673b4;
+  font-size: 18px;
+  font-weight: 600;
 }
 .search-box--hero-unit .hc-search-input:before {
   left: 10px;
@@ -2643,13 +2687,19 @@ input[type=checkbox]:checked:before {
   background-color: transparent;
 }
 
+/* Add Jin 검색 결과 layout */
 .search-results-page {
   margin-top: 48px;
   margin-bottom: 48px;
 }
 
+.search-results-sidebar {width: auto;}
+
+.search-results-column {width: 100%;}
+
+
 .search-results-count {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .search-result {
@@ -2661,7 +2711,9 @@ input[type=checkbox]:checked:before {
   margin-bottom: 12px;
   font-weight: 600;
 }
-
+@media (max-width: 435px) {
+  .search-result__title {font-size: 14px;}
+}
 .search-result__description {
   margin-bottom: 12px;
   font-size: 14px;
@@ -2682,6 +2734,7 @@ input[type=checkbox]:checked:before {
   margin-bottom: 24px;
 }
 .search-results-filters .nav-filter {
+  display: flex;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -2689,7 +2742,8 @@ input[type=checkbox]:checked:before {
 .search-results-filters .nav-pills > li > a {
   padding: 12px 15px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 18px;
+  margin-left: 0px;
 }
 .search-results-filters .nav-pills > .active > a,
 .search-results-filters .nav-pills > .active > a:hover {
@@ -2703,6 +2757,17 @@ input[type=checkbox]:checked:before {
     margin-bottom: 12px;
   }
 }
+@media screen and (max-width: 635px) and (max-width: 350px) {
+  .search-results-filters .nav-pills>li>a {padding: 10px 10px; font-size: 15px;}
+}
+
+@media screen and (max-width: 320px) {
+  .search-results-filters .nav-pills>li>a {padding: 10px 10px; font-size: 14px;}
+}
+@media screen and (max-width: 280px) {
+  .search-results-filters .nav-pills>li>a {padding: 10px 10px; font-size: 13px;}
+}
+
 
 .search-results-column--centered {
   float: none;
@@ -2978,6 +3043,8 @@ input[type=checkbox]:checked:before {
   color: #ff5252;
 }
 
+/* Add Jin footer layout */
+
 .footer-container {
   max-width: 1180px;
   margin: 0 auto;
@@ -2991,6 +3058,11 @@ input[type=checkbox]:checked:before {
 .footer-container a {
   color: #222;
 }
+.footer-container i {font-size: 13px; transform: rotate(45deg);}
+  @media (max-width: 635px) {
+    .footer-container i {font-size: 10px;}
+}
+
 
 .footer-container__wrapper {
   position: relative;
@@ -2998,11 +3070,11 @@ input[type=checkbox]:checked:before {
   background: #fff;
   border-top: 1px solid #f1f1f1;
 }
-@media (max-width: 45em) {
-  .footer-container__wrapper {
-    text-align: center;
+  @media (max-width: 45em) {
+    .footer-container__wrapper {
+      text-align: center;
+    }
   }
-}
 
 .footer-container__inner {
   width: 100%;
@@ -3010,42 +3082,65 @@ input[type=checkbox]:checked:before {
   padding: 48px 0;
 }
 
-@media (min-width: 768px) {
-  .footer-container__inner {
-    display: table;
+  @media (min-width: 768px) {
+    .footer-container__inner {
+      display: table;
+    }
   }
-}
 
 .footer-container__col {
   position: relative;
+  font-size: 0.8em;
 }
-@media (min-width: 768px) {
-  .footer-container__col {
-    display: table-cell;
-    vertical-align: top;
-  }
-}
+.footer-container__col > p {margin: 0;}
 
-@media (min-width: 768px) {
-  .footer-container__col--social-links {
-    text-align: right;
-    vertical-align: middle;
+  @media (min-width: 768px) {
+    .footer-container__col {
+      display: table-cell;
+      vertical-align: top;
+    }
   }
-}
 
-.footer-social-link {
-  width: 24px;
-  height: 24px;
-  font-size: 16px;
-  color: #222;
-  vertical-align: middle;
-}
-.footer-social-link + .footer-social-link {
-  margin-left: 11px;
-}
-.footer-social-link:hover {
-  color: #4F4C83;
-}
+  @media (max-width: 991px) {
+    .footer-container__col {padding-left: 15px;}
+  }
+  @media (max-width: 45em) {	
+    .footer-container__col {padding-left: 0px; font-size: 10px;}
+  }
+
+ /* Add Jin footer 고영사이트 eng, jp, cn, ko layout */ 
+.text-left {padding-top: 15px;}
+.text-left a {display: block; width: 100%;}
+.text-left a:hover {color: #68b950; transition: all 0.3s;}
+
+  @media (max-width: 635px) {
+    .text-left {font-size: 12px; padding-left: 0px; padding-top: 6px;}
+  }
+  @media (max-width: 280px) {
+    .text-left {padding-left: 15px;}
+  }
+
+.footer-navigation {font-size: 0px;}
+.text-right {margin-top: 8px; cursor: pointer;}
+ /* Add Jin footer eng, jp, cn, ko ipad mobile CSS */  
+  @media (max-width: 991px) {
+    .text-right {margin-left: -10px;}
+  }
+  @media (max-width: 635px) {	
+    .text-right {margin-top: 0;}
+  }
+  @media (max-width: 45em) {
+    .text-right {margin-left: -2px; padding-top: 3px;}
+  }
+#lan_footer .language-options .dropdown-toggle {font-weight: 500; font-size: 16px; text-align: right; margin-right: 0px;}
+#lan_footer .language-options .dropdown-toggle:hover {color: #68b950;}
+  @media (max-width: 635px) {
+    #lan_footer .language-options .dropdown-toggle {font-size: 12px;}
+  }
+  @media (max-width: 45em) {
+    #lan_footer .language-options .dropdown-toggle {color: #000;}
+  }
+.icon-dd-tick-dark {display: none;}
 
 .copyright {
   padding: 0 !important;
@@ -3061,9 +3156,89 @@ input[type=checkbox]:checked:before {
   color: #222 !important;
 }
 
+/* Add Jin Footer 외부링크 icon layout */
+.icon-box {  
+  position: absolute;
+  right: 0px;
+  top: -8px;
+  text-align: right;
+  margin: 0 0 0px;
+  padding: 16px 0px 5px 5px;
+}
+.icon-box:after {content:""; display: block; clear: both;}
+
+.icon-box li {
+  padding: 15px;
+}
+.icon-box li > a {display: block; width: 100%;}
+.icon-box li > a > img {height: 30px;}
+.icon-box li > a > i {
+  position: absolute;
+  transform: rotate(45deg);
+  top: 22px;
+  font-size: 10px;
+}
+.icon-box li > a:hover {color: #93c450b3;}
+.ficon_txt {display: none; position: absolute; top: 50px; background: #93c450b3; border-radius: 5px; padding: 10px 10px 10px; width: 38%; text-align: center; color: #ffff; line-height: 20px; z-index: 3;}
+
+.ficon_txt:after {
+  position: absolute;
+  top: -15px;
+  left: 20%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border: solid transparent;
+  border-bottom-color: #93c450b3;
+  border-width: 8px;
+  pointer-events: none;
+  content: ' ';
+}
+.icon-link:hover .ficon_txt {display: block;}
+ /* Add Jin footer link icon ipad CSS */  
+@media (max-width: 991px) {
+  .icon-box {display: block; position: relative; right: 0; text-align: center;}
+  .icon-box li > i {position: relative; top: -14px;}
+  .icon-box li > a  {display: block;}  
+  .ficon_txt {width: 14%; top: 70px;}
+  }
+	@media (max-width: 45em) {	
+    .icon-box {display: block; position: relative; right: 0; text-align: center;}
+    .icon-box li > i {position: relative; top: -14px;}
+    .icon-box li > a  {display: block;} 
+    .ficon_txt {top: 70px; font-size: 12px; width: 23%; padding: 5px 5px 5px;}
+	}
+ /* Add Jin Top link CSS */     
+.go-top {position: fixed; bottom: 20px; min-width: 1149px; height: 30px; margin: 0 auto; cursor: pointer; text-align: right; z-index: 3;}
+.go-top i {font-size: 33px; list-style: none; color: #68b950; transform: rotate(0deg);} 
+
+  @media (max-width: 1220px) {
+    .go-top {width: auto; right: 30px;}
+  }
+
+  /* Add Jin Footer top link ipad CSS */
+  @media (max-width: 991px) {
+    .go-top {width: auto; right: 30px;}
+  }
+  @media (max-width: 768px) {
+    .go-top i {font-size: 30px;}
+	}
+  
+  /* Add Jin Footer top link Mobile CSS */
+	@media (max-width: 635px) {
+    .go-top {width: auto; right: 10px;}
+	  .go-top i {font-size: 30px;}   
+	}
+	@media (max-width: 45em) {	
+    .go-top i {font-size: 30px;}
+	}
+ 
+
+/* Add Jin 검색 결과 페이지 버튼 css 조정 */
+
 .pagination {
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 .pagination ul {
   display: inline-block;
@@ -3077,15 +3252,16 @@ input[type=checkbox]:checked:before {
   margin-right: 6px;
   margin-bottom: 12px;
 }
+
+
 .pagination ul > li > a,
 .pagination ul > li > span {
   position: relative;
   display: block;
-  padding: 10px 12px;
   border-width: 1px;
-  border-color: #f6f6f6;
+  border-color: #ffff;
   border-radius: 4px;
-  background-color: #f6f6f6;
+  background-color: #ffff;
   color: #a6a6a7;
   text-decoration: none;
   line-height: 1.5;
@@ -3101,12 +3277,22 @@ input[type=checkbox]:checked:before {
 .pagination ul > .active > a:hover,
 .pagination ul > .active > a:focus {
   z-index: 2;
-  border-color: #4673b4;
-  background-color: #4673b4;
-  color: #fff;
-  cursor: default;
+  border: 2px solid #63b450 !important;
+  background: none;
+  color: #4673b4;
+  cursor: pointer;
 }
-/* Add Jin Header layout */
+
+.pagination .active a, .pagination .active span {background-color: #ffff;}
+.previous span, .previous a, .prev span, .prev a, .next_page span, .next_page a, .next span, .next a {height: auto !important; font-weight: 500;}
+
+@media  screen and (max-width: 45em) {
+  .pagination a, .pagination span {padding: 0px 6px;}
+}
+@media screen and (max-width: 320px) {
+  .pagination a, .pagination span {padding: 0px 3px;}
+}
+  /* Add Jin Header layout */
 .topbar {
   position: relative;
   width: 100%;
@@ -3220,6 +3406,16 @@ input[type=checkbox]:checked:before {
   }
 }
 
+@media screen and (max-width: 991px) {
+  .topbar__controls .banner-language-selector .language-options .open .dropdown-menu {
+    position: relative !important;
+    min-width: 100%;
+    background: #000;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
 .topbar_link,
 .topbar__controls > b > a {
   font-size: 18px;
@@ -3308,7 +3504,7 @@ input[type=checkbox]:checked:before {
 
 .topbar__nav--white,
 .topbar--small .topbar__nav--white,
-.topbar__nav--filled {
+.topbar__nav--filled .topbar__nav--white {
   background-color: #000;
 }
 /* Add Jin Header layout hover text css 추가 */
@@ -4407,7 +4603,7 @@ input[type=checkbox]:checked:before {
 #article-author {
   display: none;
 }
-
+/* Add Jin 아티클 보기 버튼 css layout */
 .vote-feedback {
   margin-left: 0;
 }
@@ -4443,6 +4639,7 @@ input[type=checkbox]:checked:before {
   padding: 24px 12px;
   border: 1px solid #f1f1f1;
   border-radius: 4px;
+  font-size: 14px;
 }
 
 #vote-feedback-container .lead {
@@ -4520,13 +4717,16 @@ input[type=checkbox]:checked:before {
     justify-content: space-between;
   }
 }
+@media  screen and (max-width: 767px) {
+  .ticket-toolbar .dropdown-toggle .caret {margin-top: 5px;}
+}
 
 .ticket-toolbar a {
   font-weight: 600;
 }
 
 #ticket-filters {
-  margin-bottom: 16px;
+  margin-bottom: 23px;
   margin-right: 16px;
 }
 
@@ -5283,7 +5483,7 @@ img.fr-rounded {
 .nav-pills>li>a:hover {
   border-radius: 4px;
   background: none;
-  border: solid 1px #ebeef0;
+  border: 1px solid #ffff;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -5460,7 +5660,7 @@ img.fr-rounded {
 .forum-filters .nav-pills > .active > a:hover:first-of-type {
   margin-left: 0 !important;
   background: none;
-  border: 2px solid #b8c7dd;
+  border: 1px solid #ffff;
   font-size: 15px;
   border-radius: 4px;
 }

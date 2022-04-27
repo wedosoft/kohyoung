@@ -6,23 +6,8 @@
         <a href="https://www.kohyoung.com/" target="_blank"><span>Koh Young Technology <i class="fa fa-arrow-up" aria-hidden="true"></i></span></a>
       </div>
       <!-- Add Jin Footer left END -->
-      <div class="column column--xs-6 text-right footer-navigation">
-        <div class="banner-language-selector pull-right" data-tabs="tabs" id="lan_footer" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="">
-          <ul class="language-options" role="tablist">
-            <li class="dropdown">
-              <h5 class="dropdown-toggle" data-toggle="dropdown">
-                <span>Korean</span>
-                <span class="caret"></span>
-              </h5>
-              <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
-                <li><a href="/ko/support/home" class="active"><span class="icon-dd-tick-dark"></span>Korean </a></li>
-                <li><a href="/zh-CN/support/home" class="">Chinese</a></li>
-                <li><a href="/en/support/home" class="">English</a></li>
-                <li><a href="/ja-JP/support/home" class="">Japanese</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+      <div class="column column--xs-6 text-right footer-navigation" id="lan_footer">
+       {{portal | welcome_navigation}}
       </div>
     </div>
    	  <!-- Add Jin Footer KY copyright -->
@@ -65,119 +50,6 @@
   </div>
 </footer>
 <!-- Add Jin Footer END -->
-<style>
-  /* Add Jin Footer CSS */
-  .footer-container__col {vertical-align: top; font-size: 0.8em;}
-  .footer-container__col > p {margin: 0;}
-  .text-left {padding-top: 15px;}
-  .text-left a {display: block; width: 100%;}
-  .footer-container i {font-size: 13px; transform: rotate(45deg);}
-  .text-left a:hover {color: #68b950; transition: all 0.3s;}
-  .text-right {margin-top: 8px; cursor: pointer;}
-  #lan_footer .language-options .dropdown-toggle {font-weight: 500;}
-  #lan_footer .language-options .dropdown-toggle:hover {color: #68b950;}
-  .dropdown-menu a {color: #ffff;}
-  .dropdown-menu a:hover {color: #68b950;}
-  .icon-dd-tick-dark {display: none;}
-  .footer-container__col {text-align: left;}
-  .welcome {display: none;}
-  
-  /* Add Jin Footer 외부링크 icon layout */
-   .icon-box {  
-    position: absolute;
-    right: 0px;
-    top: -8px;
-    text-align: right;
-    margin: 0 0 0px;
-    padding: 16px 0px 5px 5px;
-  }
-  .icon-box:after {content:""; display: block; clear: both;}
 
-  .icon-box li {
-    padding: 15px;
-  }
-  .icon-box li > a {display: block; width: 100%;}
-  .icon-box li > a > img {height: 30px;}
-  .icon-box li > a > i {
-    position: absolute;
-    transform: rotate(45deg);
-    top: 22px;
-    font-size: 10px;
-  }
-  .icon-box li > a:hover {color: #93c450b3;}
-  .ficon_txt {display: none; position: absolute; top: 50px; background: #93c450b3; border-radius: 5px; padding: 10px 10px 10px; width: 38%; text-align: center; color: #ffff; line-height: 20px; z-index: 3;}
-  
-  .ficon_txt:after {
-    position: absolute;
-    top: -15px;
-    left: 20%;
-    width: 0;
-    height: 0;
-    margin-left: -10px;
-    border: solid transparent;
-    border-bottom-color: #93c450b3;
-    border-width: 8px;
-    pointer-events: none;
-    content: ' ';
-  }
-  .icon-link:hover .ficon_txt {display: block;}
-  .banner-language-selector {float: none !important; margin-top: 0;}
-  
-   /* Add Jin Top link CSS */     
-  .go-top {position: fixed; bottom: 20px; min-width: 1149px; height: 30px; margin: 0 auto; cursor: pointer; text-align: right; z-index: 3;}
-  .go-top i {font-size: 33px; list-style: none; color: #68b950; transform: rotate(0deg);} 
-   @media (max-width: 1220px) {
-    .go-top {width: auto; right: 30px;}
-   }
-   @media (max-widdth: 1024px) {
-    #lan_footer .open .dropdown-menu {
-     position: relative;
-     min-width: 100%;
-     background: #000;
-     display: block;
-     }
-   }
-  /* Add Jin Footer ipad CSS */
-   @media (max-width: 991px) {
-	.topbar_link, .topbar__controls>b>a, .banner-language-selector {padding: 8px; text-align: right;}
-    .text-right {margin-left: -25px; margin-left: -10px;}
-    .footer-container__col {padding-left: 15px;}
-    .icon-box {display: block; position: relative; right: 0; text-align: center;}
-    .icon-box li > i {position: relative; top: -14px;}
-    .icon-box li > a  {display: block;}  
-    .ficon_txt {width: 14%; top: 70px;}
-    .go-top {width: auto; right: 30px;}
-  	}
-    @media (max-width: 768px) {
-    .go-top i {font-size: 30px;}
-	}
-  
-  /* Add Jin Footer Mobile CSS */
-
-	@media (max-width: 635px) {
-    .text-left {font-size: 12px; padding-left: 0px;}
-    .footer-container i {font-size: 10px;}
-    .text-right {margin-top: 0;}
-    .language-options .dropdown-toggle {font-size: 13px;}
-    .go-top {width: auto; right: 10px;}
-	  .go-top i {font-size: 30px;}
-     
-	}
-	@media (max-width: 45em) {	
-    .footer-container__col {padding-left: 0px; font-size: 10px;}
-    .language-options .dropdown-toggle {color: #000;}
-    .language-options .dropdown-toggle {padding: 0 !important; margin: 0; text-align: right;}
-    .text-right {margin-left: -2px; padding-top: 3px;}
-    .icon-box {display: block; position: relative; right: 0; text-align: center;}
-    .icon-box li > i {position: relative; top: -14px;}
-    .icon-box li > a  {display: block;} 
-    .ficon_txt {top: 70px; font-size: 12px; width: 23%; padding: 5px 5px 5px;}
-    .go-top i {font-size: 30px;}
-	}
-    @media (max-width: 280px) {
-    .text-left {padding-left: 15px;}
-    }
-   
-</style>
 
 

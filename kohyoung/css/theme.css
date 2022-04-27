@@ -2467,6 +2467,7 @@ input[type=checkbox]:checked:before {
 .language-options .dropdown-menu {background: #000;}
 
 .language-options .dropdown-menu li a {
+  text-transform: none;
   background: none;
   color: #ffff;
 }
@@ -3159,7 +3160,7 @@ input[type=checkbox]:checked:before {
 /* Add Jin Footer 외부링크 icon layout */
 .icon-box {  
   position: absolute;
-  right: 0px;
+  right: 5px;
   top: -8px;
   text-align: right;
   margin: 0 0 0px;
@@ -3168,7 +3169,7 @@ input[type=checkbox]:checked:before {
 .icon-box:after {content:""; display: block; clear: both;}
 
 .icon-box li {
-  padding: 15px;
+  padding: 20px;
 }
 .icon-box li > a {display: block; width: 100%;}
 .icon-box li > a > img {height: 30px;}

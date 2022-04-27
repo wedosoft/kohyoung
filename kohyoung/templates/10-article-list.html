@@ -34,7 +34,7 @@
 
       {% if folder.articles_count > 0 %}
         {% paginate folder.articles by 10 %}
-          <ul class="articles articles--with-columns">
+          <ul class="fv-articles articles articles--with-columns">
             {% for article in paginate.collection %}
               <li class="articles__item">
                 <a class="articles__link" href="{{ article.url }}">{{ article.title | h }}</a>
@@ -50,8 +50,8 @@
   </div>
 </div>
 <style>
-  .fv-articles {
-    word-break: break-all !important;
-    width: 240px !important;
-  }
-  </style>
+.fv-articles {
+  word-break: break-all !important;
+  width: 240px !important;
+}
+</style>

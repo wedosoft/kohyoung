@@ -6001,7 +6001,7 @@ img.fr-rounded {
 .popular-searches__item a {
   font-weight: 600;
   color: #ffffff;
-  text-decoration: underline;
+  text-decoration: none;
   transition: opacity 0.1s ease-in-out 0.1s;
 }
 

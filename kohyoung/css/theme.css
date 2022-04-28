@@ -4425,6 +4425,9 @@ input[type=checkbox]:checked:before {
     height: 120px !important;
   }
 }
+@media screen and (max-width: 820px) {
+  .category-list-item {margin-bottom: 100px;}
+}
 /* Add Jin 반응형 iPad 포털 홈 Knowledge base icon txt CSS */
 @media (max-width: 1040px) {
   .column--sm-home {width: 33.3%;}
@@ -4438,7 +4441,7 @@ input[type=checkbox]:checked:before {
   .column--sm-home {width: 50%;}
 }
 
-@media (max-width: 470px) {
+@media (max-width: 550px) {
   .column--sm-home {width: 100%;}
 }
  @media (max-width: 280px) {
@@ -4501,8 +4504,8 @@ input[type=checkbox]:checked:before {
   right: 10px; 
   background: #93c450e8; 
   border-radius: 5px; 
-  padding: 10px 10px 10px; 
-  width: 240px; 
+  padding: 8px 8px 8px; 
+  width: 230px; 
   text-align: center; 
   color: #ffff; 
   line-height: 20px; 
@@ -4546,11 +4549,9 @@ input[type=checkbox]:checked:before {
 
 @media (max-width: 435px) {
   .category-list-item__icon img {height: 35px; margin-top: -5px;}
-  .cli-txt {font-size: 14px; padding-top: 0px;}
 }
  @media (max-width: 280px) {
   .category-list-item__icon img {height: 25px; margin-top: -5px;}
-  .cli-txt {font-size: 12px; padding-top: 0px;}
 }
 
 .category-list-item__icon svg {

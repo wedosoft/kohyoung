@@ -746,7 +746,7 @@ input[type=submit].btn.btn-small,
   font-weight: 600 !important;
   transition: all 0.3s ease;
   text-shadow: none;
-  padding: 10px 12px;
+  padding: 8px 8px;
   text-transform: uppercase;
   background-color: transparent;
 }
@@ -901,7 +901,7 @@ input[type=submit].btn.btn-small:focus,
     .article-vote .vote-up {padding: 10px 10px;}
     .article-vote .vote-down {padding: 10px 10px;}
   }
-  @media (max-width: 390px) {
+  @media (max-width: 400px) {
     .article-vote .vote-up {display: block; width: 40%; margin: 15px 0 0 0;}
     .article-vote .vote-down {display: block; width: 40%; margin: 10px 0 0 0;}
   }
@@ -1157,8 +1157,8 @@ input[type=checkbox]:checked:before {
 }
 
 .bt-container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 @media (min-width: 768px) {
   .bt-container {
@@ -2661,7 +2661,9 @@ input[type=checkbox]:checked:before {
     padding-left: 38px !important;
   }
 }
-
+@media screen and (max-width: 991px) {
+  .colum-sb {width: 100%;}
+}
 .search-box--small {
   margin-bottom: 48px;
 }
@@ -4604,6 +4606,7 @@ input[type=checkbox]:checked:before {
 }
 
 .articles__link {
+  font-size: 14px;
   color: #4673b4;
 }
 /* Add Jin View all button css */
@@ -4613,7 +4616,7 @@ input[type=checkbox]:checked:before {
   color: #4673b4 !important;
 }
 
-@media screen and (max-width: 635px) {
+@media screen and (max-width: 720px) {
   .see-all-articles {padding: 5px 5px !important; font-size: 10px !important;}
 }
 
@@ -5955,7 +5958,7 @@ img.fr-rounded {
 }
 /* Add Jin 새 주제 만들기 css 수정 */
 .discussions-menu a {
-  padding: 6px;
+  padding: 8px;
   background-color: #4673b4;
   color: white;
   border: 2px solid #4673b4;

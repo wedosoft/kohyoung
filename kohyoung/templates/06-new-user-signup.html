@@ -2,14 +2,49 @@
   <div class="bt-container-inner">
     <div class="signup-page" id="login-page-wrapper">
       <div class="row clearfix">
-        <div class="column column--sm-8 column--sm-offset-2 column--md-6 column--md-offset-3">
-          <h1 class="h3 signup-page__title">
+        <div class="column column--sm-8 column--sm-offset-2 column--md-6">
+          <h1 class="signup-page__title">
             {% translate portal.user_signup_portal %} {{portal.name}}
             {% translate portal.account %}
           </h1>
+          {% case portal.current_language.code %}                    
+            {% when "ko" %}
+              <p>이 양식을 작성해 주시면 이메일 주소를 확인하고 로그인할 수 있도록 환영 이메일을 보내드립니다.</p>              
+              <p>[알림]<br />
+              - 개인 메일 주소 (naver, daum, gmail 등) 사용 불가<br />
+              - 입력한 이메일이 이미 가입되어 있다면 "비밀번호 만들기"로 비밀번호 설정 후 로그인 (기존 고객)
+              </p>
+            {% when "ja-JP" %}
+              <p>Please Fill out this form and we'll send you a welcome email so we can verify your email address and log in.</p>
+              <p>[Notice]<br />
+              - Personal e-mail address (naver, daum, gmail, etc.) cannot be used.<br />
+              - If the entered email is already registered, log in after setting the password with "Create a password" (existing customers)
+              </p>         
+            {% when "zh-CN" %}
+              <p>Please Fill out this form and we'll send you a welcome email so we can verify your email address and log in.</p>              
+              <p>[Notice]<br />
+              - Personal e-mail address (naver, daum, gmail, etc.) cannot be used.<br />
+              - If the entered email is already registered, log in after setting the password with "Create a password" (existing customers)
+              </p>
+            {% else %}                                      
+              <p>Please Fill out this form and we'll send you a welcome email so we can verify your email address and log in.</p>            
+              <p>[Notice]<br />
+              - Personal e-mail address (naver, daum, gmail, etc.) cannot be used.<br />
+              - If the entered email is already registered, log in after setting the password with "Create a password" (existing customers)
+              </p>
+            {% endcase %}
           {% snippet signup_form %}
         </div>
       </div>
     </div>
+   
+   
+  <script>
+  var context = '<p style="height:300px;width:755.33px;border:1px solid #ccc;font-size:15px;overflow:auto;">TERMS<br>You agree to be bound by the terms and conditions set out below IMPORTANT - By accessing, browsing or using any part of KOH YOUNG Help Center web site (“Web site”), you agree to be bound by the terms and conditions set out below. If you do not agree with these Terms of Use, you may not use this Web site. <br><br>INTELLECTUAL PROPERTY<br>The contents of this Web site, and the materials made available through it, are protected by copyright, trademark and other intellectual property laws and international treaties. KOH YOUNG either owns or has obtained the rights to use the content and materials on this Web site. Except as expressly provided below under the heading “Use of Web Site”, you may not copy, reproduce, republish, download, upload, post, transmit, distribute or create derivative works from any of the content in this Web site, without KOH YOUNG’s prior written consent. <br><br>USE OF WEB SITE<br>General Browsing and Use: KOH YOUNG grants you a limited license to access and use (display, print, download) the Web pages and content within this Web site solely on your computer and for your own personal, non-commercial use, provided that:<br>You do not modify the content displayed on this Web site; and<br>You retain and keep intact all copyright, trademark or other proprietary notices. <br><br>RESTRICTIONS<br>Except for the limited license provided above, KOH YOUNG does not grant you any express or implied rights or licenses under any patents, trademarks, copyrights or other proprietary or intellectual property rights. You agree that you will not:<br>- license, sell, distribute or otherwise commercially exploit this Web site or any Materials, information, software or content posted or contained in it;<br>- create internet “links” to the Web site or “frame” or “mirror” any content on any other server or wireless or internet-based device;<br>- harvest or otherwise collect or reveal information about others, including names and email addresses;<br>- probe, scan or test the vulnerability of this Web site, or breach the security or authentication measures on this Web site;<br>- take any action that imposes an unreasonable or disproportionately large load on the infrastructure of this Web site, or any systems or networks connected to this Web site;<br>- use any device, software or routine to interfere or attempt to interfere with the proper working of this Web site or any transaction being conducted on this Web site, or with any other person’s use of this Web site;<br>- forge headers or otherwise manipulate identifiers in order to disguise the origin of any message or transmittal you send to KOH YOUNG on or through this Web site; or<br>- pretend that you are, or that you represent, someone else, or impersonate any other individual or entity. <br><br>CONFIDENTIAL INFORMATION<br>This Web site may contain Confidential Information of KOH YOUNG. “Confidential Information” is anything which KOH YOUNG does not make generally available to the public without restriction, and which it considers to be proprietary. Confidential Information includes, but is not limited to: (a) software, code or other technology; (b) technical information about KOH YOUNG products, including product roadmaps; (c) personally identifiable information about an individual; (d) material or information which, given its nature, should reasonably be considered to be confidential; and (e) material or information which is marked “confidential”.<br>- You will maintain the confidentiality of all Confidential Information you obtain or access.<br>- You will use Confidential Information solely for the purpose for which it has been disclosed to you.<br>- You will not disseminate or distribute Confidential Information.<br>- You will not remove any proprietary notices contained in or on any Confidential Information. <br><br>DISCLAIMER<br>Information and materials on this Web site are provided “as is” and are not promised or guaranteed to be correct, current or complete. This Web site may contain technical inaccuracies or typographical errors. KOH YOUNG assumes no responsibility (and expressly disclaims responsibility) for updating this Web site to keep information current or to ensure the accuracy or completeness of any posted information. Accordingly, you should confirm the accuracy and completeness of all information and materials before making any decision related to any products, services or other matters described in this Web site. <br><br><span style="font-size:14px;">YOU EXPRESSLY UNDERSTAND AND AGREE THAT USE OF THIS WEB SITE IS AT YOUR SOLE RISK. KOH YOUNG MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, QUALITY DURABILITY OR NON-INFRINGEMENT.<br>KOH YOUNG DOES NOT REPRESENT OR WARRANT THAT THIS WEB SITE WILL BE UNINTERRUPTED, TIMELY, SECURE OR FREE FROM ERRORS, VIRUSES OR OTHER DEFECTS.<br>YOU ASSUME ALL RISKS IN THE TRANSMISSION OF ANY MATERIALS, DATA OR INFORMATION TO AND FROM KOH YOUNG, INCLUDING ANY INTERCEPTION BY THIRD PARTIES. LIMITATION OF LIABILITY<br>IN NO EVENT WILL KOH YOUNG BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS WEB SITE OR FOR THE USE OR DOWNLOADING OF ANY MATERIALS, INFORMATION, PRODUCTS OR SERVICES MADE AVAILABLE ON THIS WEB SITE, EVEN IF KOH YOUNG IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THIS EXCLUSION AND WAIVER OF LIABILITY APPLIES TO ALL CAUSES OF ACTION, WHETHER BASED ON CONTRACT, WARRANTY, TORT OR ANY OTHER LEGAL THEORY.</span><br><br>LINKS TO OTHER WEB SITES<br>Links on this Web site to third party web sites are provided for your convenience only. KOH YOUNG is not responsible for and does not endorse, control or make any representations or warranties as to the content, products or services offered from third party web sites. You are responsible for complying with the terms of use for such third party web sites. <br><br>AMENDMENTS<br>KOH YOUNG retains the right to amend the above terms at any time, including the right to revoke any permissions. These Terms of Use were last updated February 14, 2017.</p>';
+  jQuery('#new_user > fieldset > ul > li.control-group.checkbox.custom_checkbox.field.checkbox-wrap > div > span').after(context);
+  </script>
   </div>
 </div>
+<style>
+  fieldset {min-width: 0;}
+</style>

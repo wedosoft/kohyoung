@@ -1580,10 +1580,6 @@ input[type=checkbox]:checked:before {
     margin-left: 16.6666666667%;
   }
 
-  .column--sm-offset-3 {
-    margin-left: 25%;
-  }
-
   .column--sm-offset-4 {
     margin-left: 33.3333333333%;
   }
@@ -1641,9 +1637,7 @@ input[type=checkbox]:checked:before {
     width: 41.6666666667%;
   }
 
-  .column--md-6 {
-    width: 50%;
-  }
+
 
   .column--md-7 {
     width: 58.3333333333%;
@@ -3317,7 +3311,7 @@ input[type=checkbox]:checked:before {
   display: none;
 }
 
-.topbar.topbar--home .btn-topbar, .topbar.topbar--home .topbar__controls>b>a {font-size: 18px; font-weight: 600; margin-left: 1rem;}
+.topbar.topbar--home .btn-topbar, .topbar.topbar--home .topbar__controls>b>a {font-size: 18px; font-weight: 600; margin-right: 1rem;}
 .btn.btn-topbar, .topbar .topbar__controls>b>a, .topbar .banner-language-selector .dropdown-toggle {font-size: 18px; font-weight: 600; color: #222;}
 @media screen and (max-width: 435px) {
   .topbar.topbar--home .btn-topbar, .topbar.topbar--home .topbar__controls>b>a {font-size: 16px;}
@@ -3433,6 +3427,7 @@ input[type=checkbox]:checked:before {
   color: #222;
   font-weight: 600;
   transition: color 0.5s ease;
+  margin-right: 1rem;
 }
 @media screen and (max-width: 435px) {
   .topbar_link,
@@ -3948,7 +3943,7 @@ input[type=checkbox]:checked:before {
 .bt-auth-page #login-form .controls input[type=password] {
   width: 100% !important;
 }
-
+/* Add Jin 회원가입 layout*/
 @media (min-width: 768px) {
   .signup-page {
     margin-bottom: 48px;
@@ -3956,13 +3951,15 @@ input[type=checkbox]:checked:before {
 }
 
 .signup-page__title {
-  font-size: 24px;
+  font-size: 18px;
 }
 @media (min-width: 768px) {
   .signup-page__title {
-    font-size: 28px;
+    font-size: 22px;
   }
 }
+
+.required_star {color: #68b950;}
 
 #signup-container {
   border: 0;
@@ -3981,6 +3978,12 @@ input[type=checkbox]:checked:before {
   margin: 0;
   padding: 0;
 }
+
+.signup-page .btn-primary {width: 120px !important;}
+@media screen and (max-width: 320px) {
+  .signup-page .btn-primary {width: 100px !important;}
+}
+.signup-page .btn {font-size: 12px;}
 
 .sidenav-categories,
 .sidenav-sections,

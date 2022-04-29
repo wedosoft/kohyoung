@@ -1,0 +1,61 @@
+<footer class="footer-container">
+  <div class="footer-container__wrapper bt-container">
+ 	  <div class="row clearfix">
+      <!-- Add Jin Footer left -->
+      <div class="column column--xs-6 text-left">
+        <a href="https://www.kohyoung.com/" target="_blank"><span>KohYoung Technology <i class="fa fa-arrow-up" aria-hidden="true"></i></span></a>
+      </div>
+      <!-- Add Jin Footer left END -->
+      <div class="column column--xs-6 text-right footer-navigation" id="lan_footer">
+       {{portal | welcome_navigation}}
+      </div>
+    </div>
+   	  <!-- Add Jin Footer KY copyright -->
+    <div class="bt-container-inner footer-container__inner">
+      <div class="footer-container__col footer-container__col--copyright">
+        <p>Copyright 2022, KOH YOUNG TECHNOLOGY INC.</p><br>
+        <p>The contents of this website are protected by copyright law.</p>
+        <p>Copying, reproducing or publishing any content without the permission of the copyright owner is strictly prohibited.</p><br>
+          <!-- Add Jin Footer KY icon external link -->
+        <ul class="container-inner icon-box">
+           <li class="icon-link">
+              {% for category in portal.solution_categories %}
+              	{% if category.folders_count > 0 %}
+                	{% if category.id == 47000523081 %}
+                    	<a href="./discussions/">
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Forums.png?raw=true" alt="forums">
+                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                        <p class="ficon_txt">Forums</p>
+            			    </a>
+                	{% endif %}
+               	{% endif %}
+              {% endfor %}
+          </li>
+          <li class="icon-link">
+            <a href="https://tr.kohyoung.com/index.php" target="_blank">
+              <img src="https://github.com/wedosoft/kohyoung/blob/main/images/LMS.png?raw=true" alt="kohyounglms">
+              <i class="fa fa-arrow-up" aria-hidden="true"></i>
+              <p class="ficon_txt">Kohyoung LMS</p>
+            </a>
+          </li>
+          <li class="icon-link">
+            <a href="https://kypartner.kohyoung.net/" target="_blank">
+              <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Partners.png?raw=true" alt="partnerspage">
+              <i class="fa fa-arrow-up" aria-hidden="true"></i>
+              <p class="ficon_txt">Partners page</p>
+            </a>
+          </li>
+        </ul>
+        <!-- Add Jin Footer KY external link END-->
+        <!-- Add Jin Top link -->
+       <a id="top-link"><div class="go-top"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></div></a>
+        <!-- Add Jin Top link END -->
+      </div>
+    </div>
+    <!-- Add Jin Footer KY copyright END-->
+  </div>
+</footer>
+<!-- Add Jin Footer END -->
+
+
+

@@ -1,0 +1,122 @@
+<div class="bt-container">
+  <div class="bt-container-inner">
+    <div class="article-page">
+      <div class="row clearfix">
+        <div class="column column--sm-8">
+          <ol class="breadcrumbs">
+            <li>
+              <a href="{{portal.home_url}}">{% translate header.tabs.home %}</a>
+            </li>
+            <li title="{% translate portal.solutions_home %}">
+              <a href="{{ portal.solutions_home_url }}">{% translate portal.solutions_home %}</a>
+            </li>
+            <li title="{{ article.category.name | h}}">
+              <a href="{{ article.category.url }}">{{ article.category.name | h}}</a>
+            </li>
+            <li title="{{ article.folder.name | h}}">
+              <a href="{{ article.folder.url }}">{{ article.folder.name | h}}</a>
+            </li>
+          </ol>
+        </div>
+        <div class="column column--sm-4 colum-sb">
+          <div class="search-box search-box--small">
+            {% snippet search_form %}
+          </div>    
+        </div>
+      </div>
+      <div class="row clearfix">
+       <div id="sm-desk">
+          <div data-toc></div>
+        </div>
+        <div class="column column--sm-3">
+          <div class="side-nav">
+            <div class="sidenav sidenav--accordion">
+              <ul class="sidenav-categories">
+                {% for category in portal.solution_categories %}
+                  {% if category.folders_count > 0 %}
+                    <li class="sidenav-category {% if category.id == article.category.id %}is-active{% endif %}" id="sidenav-category-{{category.id}}">
+                      <span class="sidenav-category__link js-sidenav-category-link">{{category.name}}</span>
+                      <ul class="sidenav-sections">
+                        {% for folder in category.folders %}
+                          {% if folder.articles_count > 0 %}
+                            <li class="sidenav-section {% if folder.id == article.folder.id %}is-active{% endif %}" id="sidenav-section-{{folder.id}}">
+                              <span class="sidenav-section__link js-sidenav-section-link">{{folder.name}}</span>
+                              <ul class="sidenav-articles">
+                                {% for article_item in folder.articles %}
+                                  <li class="sidenav-article {% if article_item.id == article.id %}is-active{% endif %}" id="sidenav-article-{{article_item.id}}">
+                                    <a class="sidenav-article__link js-sidenav-article-link" href="{{ article_item.url }}">{{article_item.title}}</a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <a class="btn btn-default sidebar-toggle js-sidebar-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i> navigation</a>
+        </div>
+        <div class="column column--sm-6">
+          <article class="article clearfix" itemscope itemtype="http://schema.org/Article">
+            <header class="article-header">
+              <h1 class="article__title" itemprop="name">
+                {{ article.title | h}}
+              </h1>
+
+              <div class="article-meta">
+                <div class="article-meta__col article-meta__col--main">
+                  <div class="entry-info">
+                    <div class="entry-info__content">
+                      {% if article.personalized_articles? %}
+                        <b class="author">
+                          {{ article.author }}
+                        </b>
+                      {% endif %}
+                      <div class="meta">{% translate portal.article.modified_on %} {{ article.modified_on | short_day_with_time }}</div>
+                      <span class="print-btn" data-print-article>
+                        <img src="https://helpcenter.kohyoung.net:447/Images/btn/btn_print.png">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            <div class="article__body markdown" itemprop="articleBody" data-article>
+              {{ article.body }}
+            </div>
+
+            {% if article.attachments.size > 0  %}
+              <div class="article__attachments">
+                <ul class="list-unstyled attachment-list">
+                {% for attachment in article.attachments %}
+                  <li class="attachment-list__item">
+                    <span class="fa fa-paperclip attachment-list__icon"></span>
+                    <a href="{{ attachment.url }}" target="_blank">{{ attachment.filename }}</a>
+                    <div class="meta">({{ attachment.size }})</div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </article>
+
+          <footer class="article-footer clearfix">
+            {{article | article_voting }}
+          </footer>
+
+          <div class="prevnext"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /* Add Jin forum 히든처리 */
+  .sidenav-category:nth-child(3) {display: none;}
+</style>

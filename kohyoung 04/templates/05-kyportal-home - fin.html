@@ -1,0 +1,99 @@
+{% assign category_list_enabled = true %}
+{% assign recent_articles_enabled = true %}
+
+<div class="bt-container" data-home-page>
+  <div class="bt-container-inner">
+    {% if recent_articles_enabled %}
+      {% if portal.recent_articles.size > 0 %}
+        <div class="recent-articles" id="recent-articles">
+          <h2 class="recent-articles__title text-center">RECENT ARTICLES</h2>
+          <ul class="row articles recent-articles__list">
+            {% for article in portal.recent_articles limit:6 %}
+              <li class="column column--sm-4 articles__item recent-articles-item">
+                <a class="articles__link" href="{{ article.url }}"><span class="fa fa-star"></span> {{ article.title | h }}</a>
+                <p class="recent-articles-item__excerpt meta">
+                  {{ article.body_plain | h |truncate:80 }}
+                </p>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+<div class="bt-container bt-container--grey clearfix">
+  <div class="bt-container-inner">
+    {% if category_list_enabled %}
+      <h2 class="category-list-title"><a href="/ko/support/solutions">BROWSER OUR KNOWLEDGE BASE</a></h2>
+      <div class="category-list-wrapper" id="category-list">
+        <ul class="row category-list">
+          {% for category in portal.solution_categories %}
+            {% if category.folders_count > 0 %}
+              <li class="column column--sm-home category-list-item">   
+                <a class="category-list-item__link" href="{{category.url}}">
+                  <!--2022 04 Add Jin solution layout End -->
+                  <span class="category-list-item__icon">
+                    {% case category.id %}                    
+                      {% when 47000253217 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/official-documents.png?raw=true" alt="Official-documents">
+                      <p class="icon_txt">Report Format, User Manual, Brochure, Eco, Certification, KY Statement, Discontinued Service, SW License, Warranty, Training Curriculum</p>
+                      {% when 47000253218 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Release-Notes.png?raw=true" alt="Releasenote">
+                        <p class="icon_txt">AOI, SPI, KSMART, KPO, AOI_New Features, SPI_New Features , KSMART New Features, Others</p>
+                      {% when 47000253219 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Application-Note.png?raw=true" alt="APPLICATION NOTE">
+                        <p class="icon_txt">Setting Manual, User guide, Etc</p>
+                      {% when 47000253220 %}
+                        <img src="https://raw.githubusercontent.com/wedosoft/kohyoung/main/images/Icon_Koh-Young-Inspection-Machine-BW_LowRes.png" alt="Hardware">
+                        <p class="icon_txt">Hardware Setting Manual, Etc</p>              
+                      {% when 47000253222 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/download.png?raw=true" alt="SOFTWARE DOWNLOAD">   
+                        <p class="icon_txt">AOI GUI, SPI GUI, MCS, Ksmart Solution, Review Station, KsmartBase, Kycal, KYI, Utility, BRM, EPM</p>              
+                      {% when 47000253224 %}
+                        <img src="https://breezythemes.s3-us-west-2.amazonaws.com/kohyoung/icon8.png" alt="" />                   
+                      {% when 47000253225 %}
+                        <img src="https://www.wedosoft.net/wordpress/wp-content/uploads/2021/08/FAQ.png" alt="" />   
+                        <p class="icon_txt">Hardware, Software, Performance, etc</p>              
+                      {% when 47000253226 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Team-activity.png?raw=true" alt="AE TEAM ACTIVITY">
+                        <p class="icon_txt">Application Note, AE Guideline, Sample Test Report</p>
+                      {% when 47000253221 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Troubleshooting.png?raw=true" alt="TROUBLESHOOTING">
+                        <p class="icon_txt">Troubleshooting guide, Etc</p>
+                      {% when 47000523157 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/KYE-Distributors-Only.png?raw=true" alt="KYE-Distributors">
+                        <p class="icon_txt">KYE-DISTRIBUTORS ONLY</p>
+                      {% when 47000253223 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/help-desk.png?raw=true" alt="Abouthelpdesk">
+                        <p class="icon_txt">Terms of Use, About Koh Young, Frequently Asked Questions</p>
+                      {% when 47000520250 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/admin.png?raw=true" alt="Admin">             
+                        <p class="icon_txt">ADMIN</p>
+                      {% when 47000523502 %}
+                        <img src="https://www.wedosoft.net/wordpress/wp-content/uploads/2021/10/ASIA.png" alt="" />
+                        <p class="icon_txt">KYSEA DISTRIBUTORS</p>
+                      {% when 47000524414 %}
+                        <img src="https://github.com/wedosoft/kohyoung/blob/main/images/Release-Notes.png?raw=true" alt="KOREA_SUPPORT">
+                        <p class="icon_txt">KOREA SUPPORT</p>
+                      {% else %}                                      
+                      <img src="https://breezythemes.s3-us-west-2.amazonaws.com/kohyoung/category-default.png" alt="" />
+                    {% endcase %}
+                  </span>      
+                  <h2 class="h5 category-list-item__title">{{category.name}}</h2>
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  /* Add Jin forum 히든처리 */
+  .column--sm-home:nth-child(3) {display: none;}
+</style>
+
